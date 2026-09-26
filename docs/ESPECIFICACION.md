@@ -1,6 +1,6 @@
 # Especificación técnica — App Darcy-Weisbach v1
 
-Copia en el repo de la especificación validada (original en claude.ai, 2026-09-25). **Este archivo es la referencia para el código:** si algo cambia, se actualiza acá primero y después el Excel, el oráculo, los vectores y el motor.
+Copia en el repo de la especificación validada (original en claude.ai, 2026-09-25). **Revisión 1.1** (2026-09-25): agrega salidas que el Excel ya tenía y la interfaz necesita mostrar sin calcular (ver "Cambios de la revisión 1.1" al final). **Este archivo es la referencia para el código:** si algo cambia, se actualiza acá primero y después el Excel, el oráculo, los vectores y el motor.
 
 ## Propósito y alcance
 
@@ -48,7 +48,7 @@ Todo el cálculo interno se hace en SI (m, m³/s, m²/s). El caudal se convierte
 | m³/s | 1 |
 | gpm (US) | 0,003785411784 / 60 (galón US = 3,785411784 l, exacto por definición) |
 
-DI [mm] / 1000 = D [m]; K [mm] / 1000 = K [m]. La app muestra además el caudal equivalente en m³/h, l/s, m³/s y l/h.
+DI [mm] / 1000 = D [m]; K [mm] / 1000 = K [m]. La app muestra además el caudal equivalente en m³/h, l/s, m³/s y l/h, que devuelve el motor (paso 3) con las mismas fórmulas del Excel: Q_m3h = Q·3600, Q_ls = Q·1000, Q_lh = Q·3 600 000 (celdas B28, B29 y B31 de "Datos de entrada").
 
 ## Algoritmo de cálculo
 
@@ -56,7 +56,7 @@ DI [mm] / 1000 = D [m]; K [mm] / 1000 = K [m]. La app muestra además el caudal 
 
 1. **Diámetro, rugosidad y C.** D = DI/1000 (DI de la tabla E1–E3, o manual E4). K = K manual si se ingresó; si no, el **máximo** del rango de la tabla; K [m] = K [mm]/1000. C = C manual si se ingresó; si no, el de la tabla.
 2. **Viscosidad.** Interpolación lineal en la tabla (Tᵢ, νᵢ); i = mayor índice con Tᵢ ≤ T, limitado al penúltimo punto (T = 60 °C usa el último tramo): ν = νᵢ + (T − Tᵢ)·(νᵢ₊₁ − νᵢ)/(Tᵢ₊₁ − Tᵢ).
-3. **Caudal.** Q [m³/s] = valor × factor de la unidad.
+3. **Caudal.** Q [m³/s] = valor × factor de la unidad. Equivalentes para mostrar: Q_m3h = Q·3600; Q_ls = Q·1000; Q_lh = Q·3 600 000.
 4. **Velocidad.** A = πD²/4; V = Q/A.
 5. **Reynolds.** Re = V·D/ν.
 6. **Régimen.** Laminar si Re < 2000; transición si 2000 ≤ Re ≤ 4000; turbulento si Re > 4000.
@@ -64,7 +64,7 @@ DI [mm] / 1000 = D [m]; K [mm] / 1000 = K [m]. La app muestra además el caudal 
     - Laminar: f = 64/Re, sin iterar (iteraciones = 0).
     - Transición y turbulento: Colebrook-White iterativo. f₀ = [−2·log₁₀(K/(3,71·D))]⁻² si K > 0, o f₀ = 0,02 si K = 0. Iteración: fᵢ₊₁ = [−2·log₁₀(2,51/(Re·√fᵢ) + K/(3,71·D))]⁻².
     - Parada: primera iteración con |fᵢ₊₁ − fᵢ| < 1E-6; se adopta f = fᵢ₊₁. Máximo 30 iteraciones; si no converge → error E-NOCONV.
-8. **Control Swamee-Jain** (solo informativo): f_SJ = 0,25 / [log₁₀(K/(3,7·D) + 5,74/Re^0,9)]².
+8. **Control Swamee-Jain** (solo informativo): f_SJ = 0,25 / [log₁₀(K/(3,7·D) + 5,74/Re^0,9)]². Diferencia dif_sj = f_SJ/f − 1 (celda B20 de "Calculo de f").
 9. **Pérdidas.** hv = V²/(2g); hf = f·(L/D)·hv; h_loc = (Σ nⱼ·Kⱼ)·hv, sumando de izquierda a derecha primero las singularidades de tabla y después las propias; h_total = hf + h_loc.
 10. **Hazen-Williams** (SI, comparación): hf_HW = 10,679·L·Q^1,852 / (C^1,852·D^4,87). Pendiente J = hf/L; pérdida cada 100 m = 100·J; diferencia HW vs DW = hf_HW/hf − 1.
 
@@ -80,7 +80,7 @@ Los mismos 14 resultados del Excel. El redondeo es solo visual; el cálculo y la
 | Régimen | — | Texto | Turbulento |
 | Factor de fricción f | — | 5 decimales | 0,01438 |
 | Iteraciones | — | Entero | 4 |
-| f de Swamee-Jain (control) | — | 5 decimales y diferencia en % | 0,01444 (+0,40 %) |
+| f de Swamee-Jain (control) | — | 5 decimales y diferencia dif_sj en %, 2 decimales con signo | 0,01444 (+0,40 %) |
 | hf por fricción (DW) | m | 3 decimales | 2,577 |
 | hf de Hazen-Williams | m | 3 decimales | 2,503 |
 | Diferencia HW vs DW | % | 1 decimal | −2,9 % |
@@ -101,6 +101,9 @@ Un **error** bloquea el resultado y marca el campo. Una **advertencia** muestra 
 | E-FORMATO | Error | Texto no numérico o separador ambiguo | "{campo}: no es un número válido. Usá coma o punto decimal, sin separador de miles." |
 | E-RANGO | Error | Valor fuera del rango de la tabla de Entradas | "{campo} debe estar entre {mín} y {máx} {unidad}." |
 | E-NOCONV | Error | Colebrook no converge en 30 iteraciones | "El cálculo del factor de fricción no convergió. Revisá los datos." |
+| E-RANGO (listas) | Error | tabla, dn_pn, material o Q_unidad fuera de la lista | "Elegí una tabla de diámetros de la lista." · "Elegí un diámetro nominal y una presión nominal de la lista." · "Elegí un material de la lista." · "Elegí una unidad de caudal de la lista." |
+| E-RANGO (extra_max) | Error | Más de 10 singularidades propias | "Podés agregar hasta 10 singularidades propias." |
+| E-RANGO (extra_nombre) | Error | Nombre de más de 60 caracteres | "El nombre de la singularidad puede tener hasta 60 caracteres." |
 | A-LAMINAR | Advertencia | Re < 2000 | "Régimen laminar: se usa f = 64/Re." |
 | A-TRANSICION | Advertencia | 2000 ≤ Re ≤ 4000 | "Régimen de transición: el resultado es incierto (Colebrook no es válido en esta zona)." |
 | A-VEL-ALTA | Advertencia | V > 2,5 m/s | "Velocidad alta (> 2,5 m/s): riesgo de golpe de ariete y desgaste." |
@@ -108,7 +111,7 @@ Un **error** bloquea el resultado y marca el campo. Una **advertencia** muestra 
 | A-KD | Advertencia | K/D > 0,05 | "Rugosidad relativa fuera del rango del diagrama de Moody (K/D > 0,05)." |
 | A-HW | Advertencia | T < 5 °C o T > 25 °C, o D < 50 mm | "Hazen-Williams es empírica y pierde precisión con estos datos; usar Darcy-Weisbach." |
 
-Campos de error que devuelve el motor (`campo`): `tabla`, `di_manual`, `dn_pn`, `material`, `k_manual`, `c_manual`, `L`, `T`, `Q_m3s`, `Q_unidad`, `cantidad`, `extra_max`, `extra_nombre`, `extra_k`, `extra_cantidad`. Mensajes con voseo, siempre diciendo qué hacer. Nunca se muestra NaN, Infinity ni un número sin unidad.
+Campos de error que devuelve el motor (`campo`): `tabla`, `di_manual`, `dn_pn`, `material`, `k_manual`, `c_manual`, `L`, `T`, `Q_m3s`, `Q_unidad`, `cantidad`, `extra_max`, `extra_nombre`, `extra_k`, `extra_cantidad`. Cada error trae además `fila`: la posición (desde 0) de la singularidad en `cantidades` (campo `cantidad`) o en `singularidades_extra` (campos `extra_*` salvo `extra_max`), para marcar la fila exacta; `null` en los demás. El E-RANGO de `Q_m3s` se informa en m³/s, porque se valida después de convertir. Mensajes con voseo, siempre diciendo qué hacer. Nunca se muestra NaN, Infinity ni un número sin unidad.
 
 ## Tablas de datos
 
@@ -146,7 +149,7 @@ Viven en `packages/data/tablas.json`, generado desde el Excel con `oracle/export
 
 ## Criterios de aceptación
 
-Una implementación cumple si reproduce los vectores de `test_vectors/` con error relativo ≤ 1E-9 en cada número (las restas `delta` y `dif_hw_dw`, con error absoluto ≤ 1E-12), y devuelve exactamente los mismos códigos de error y advertencia, el mismo número de iteraciones y la misma estructura.
+Una implementación cumple si reproduce los vectores de `test_vectors/` con error relativo ≤ 1E-9 en cada número (las restas `delta`, `dif_hw_dw` y `dif_sj`, con error absoluto ≤ 1E-12), y devuelve exactamente los mismos códigos de error y advertencia, el mismo número de iteraciones y la misma estructura.
 
 | Verificación | Estado (2026-09-25) |
 | --- | --- |
@@ -171,3 +174,14 @@ Una implementación cumple si reproduce los vectores de `test_vectors/` con erro
 | Límites de régimen | Laminar < 2000; transición 2000–4000; turbulento > 4000 |
 | g | 9,81 m/s² |
 | f₀ = 0,02 cuando K = 0 | Aprobado |
+
+## Cambios de la revisión 1.1
+
+Sin cambios en fórmulas, tablas ni resultados existentes; el Excel no cambia (ya tenía estas celdas). Se agregan salidas para que la interfaz no tenga que calcular nada:
+
+| Cambio | Dónde | Origen en el Excel |
+| --- | --- | --- |
+| `resultados.dif_sj` = f_SJ/f − 1 | Paso 8 | "Calculo de f"!B20 |
+| `intermedios.Q_m3h`, `Q_ls`, `Q_lh` | Paso 3 | "Datos de entrada"!B28, B29, B31 |
+| `fila` en cada error | Advertencias y errores | — (el Excel no valida) |
+| Textos de E-RANGO para listas, `extra_max` y `extra_nombre` | Advertencias y errores | — |

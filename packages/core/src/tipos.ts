@@ -38,6 +38,12 @@ export type CampoError =
 export interface ErrorEntrada {
   readonly codigo: CodigoError;
   readonly campo: CampoError | null;
+  /**
+   * Posición (desde 0) de la singularidad con el error: en `cantidades` para el campo
+   * `cantidad`, en `singularidades_extra` para `extra_nombre`, `extra_k` y `extra_cantidad`.
+   * null en los demás campos (Especificación 1.1).
+   */
+  readonly fila: number | null;
 }
 
 export type Advertencia = "A-LAMINAR" | "A-TRANSICION" | "A-VEL-ALTA" | "A-VEL-BAJA" | "A-KD" | "A-HW";
@@ -62,6 +68,10 @@ export interface Intermedios {
   readonly f0: number | null;
   readonly hv_m: number;
   readonly suma_K: number;
+  /** Caudal equivalente para mostrar, con las fórmulas del Excel (Especificación 1.1, paso 3). */
+  readonly Q_m3h: number;
+  readonly Q_ls: number;
+  readonly Q_lh: number;
 }
 
 export interface Resultados {
@@ -71,6 +81,8 @@ export interface Resultados {
   readonly f: number;
   readonly iteraciones: number;
   readonly f_sj: number;
+  /** f_SJ/f − 1 (Especificación 1.1, paso 8). */
+  readonly dif_sj: number;
   readonly hf_dw: number;
   readonly hf_hw: number;
   readonly dif_hw_dw: number;

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version_especificacion": "1.0",
+  "version_especificacion": "1.1",
   "version_tablas": "1.0.0",
   "tolerancia_relativa": 1e-09,
   "semilla": 20260925

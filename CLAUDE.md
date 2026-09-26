@@ -7,8 +7,9 @@ Contexto para continuar el desarrollo con Claude Code. Leer entero antes de toca
 Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-White, Hazen-Williams y pérdidas localizadas) para docentes y estudiantes de la Facultad de Agronomía. Migra el Excel `C:\Users\Take\OneDrive\Proyectos\DarcyWeisbach\Darcy Weisbach - corregido.xlsx`, que es la fuente de verdad de las tablas. El repo vive en `C:\dev\perdidas` (fuera de OneDrive a propósito).
 
 - Repo: https://github.com/hidrocalc/perdidas (público, licencia MIT, titular Takeshi; su madre, docente usuaria, es co-propietaria de la organización).
-- **Especificación técnica v1 (congelada): [`docs/ESPECIFICACION.md`](docs/ESPECIFICACION.md).** Es la referencia para todo el código: entradas y rangos, algoritmo paso a paso, formatos de resultados y textos exactos de errores y advertencias. Leerla antes de escribir la interfaz.
+- **Especificación técnica v1, revisión 1.1: [`docs/ESPECIFICACION.md`](docs/ESPECIFICACION.md).** Es la referencia para todo el código: entradas y rangos, algoritmo paso a paso, formatos de resultados y textos exactos de errores y advertencias. Leerla antes de escribir la interfaz.
 - Plan de desarrollo: [`docs/PLAN.md`](docs/PLAN.md).
+- **Registro de decisiones: [`docs/DECISIONES.md`](docs/DECISIONES.md).** Takeshi delega las decisiones técnicas: decidir, seguir y registrar cada decisión no trivial ahí (qué, por qué, alternativas, impacto).
 - Los originales están en claude.ai (Claude Code no puede abrirlos; las copias en `docs/` son las que valen).
 
 ## Restricciones del proyecto (no negociables)
@@ -30,9 +31,9 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 | --- | --- |
 | 0. Especificación | Cerrada y validada (8 decisiones, ver abajo) |
 | 1. Oráculo y vectores | Hecha: 340 casos de cálculo y 34 de parseo; oráculo = Excel en 309 casos, error máximo 1,2E-13 |
-| 2. Motor `@dw/core` | Hecha: 400 pruebas, 100 % de líneas, 99 % de ramas, 25/25 mutantes detectados, CI en verde |
+| 2. Motor `@dw/core` | Hecha: 100 % de líneas, 99 % de ramas, 25/25 mutantes detectados. Revisión 1.1 (D-09): 343 vectores |
 | 3. Datos y unidades | Casi resuelta dentro del motor (tablas exportadas del Excel, 7 unidades de caudal) |
-| **4. Interfaz PWA** | **Siguiente** |
+| **4. Interfaz PWA** | **En curso**: Svelte 5 (D-01). Hechos los pasos 1–3 (andamiaje, shell PWA + Playwright, formato y mensajes). Sigue el paso 4: formulario |
 | 5. Pruebas en dispositivos y piloto | Pendiente: piloto con alumnos del curso de la docente |
 | 6. Publicación | Pendiente: GitHub Pages + QR en el EVA |
 
@@ -69,7 +70,9 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 
 ```bash
 pnpm install
-pnpm check                                    # typecheck + lint (strictTypeChecked) + tests con cobertura
+pnpm check                                    # typecheck (tsc + svelte-check) + lint + tests con cobertura + build
+pnpm --filter @dw/app e2e                     # Playwright (en Windows omite Firefox, ver D-07)
+pnpm dev                                      # interfaz en modo desarrollo
 python -m pytest oracle -q
 python oracle/generar_vectores.py --verificar # lo mismo que corre la CI
 ```
@@ -81,13 +84,16 @@ La CI (`.github/workflows/ci.yml`) corre en cada push: oráculo en Python 3.12, 
 - No usar `sum()` en el oráculo: desde Python 3.12 usa suma compensada y cambia el último decimal. Sumar explícito de izquierda a derecha, igual que el motor y el Excel.
 - No comparar vectores bit a bit entre plataformas: usar `oracle/comparar.py` (1E-12).
 - Excel compara con 15 cifras significativas y la app compara exacto en IEEE 754. Por eso los vectores no se ubican justo sobre los límites (por ejemplo Re = 4000); los límites exactos se prueban con tests unitarios de `regimenDe` y `advertenciasDe`.
-- Las restas de valores casi iguales (`delta`, `dif_hw_dw`) se comparan con error absoluto.
+- Las restas de valores casi iguales (`delta`, `dif_hw_dw`, `dif_sj`) se comparan con error absoluto.
+- Solo exportar `tablas.json` si cambió el Excel; un diff sin cambios en el Excel se descarta (D-10).
+- No usar `context.setOffline` para probar el modo offline: el WebKit de Playwright falla. Apagar el servidor (D-08).
+- `gh` no está instalado: la CI se consulta con la API pública (`api.github.com/repos/hidrocalc/perdidas/actions/runs`).
 
 ## Etapa 4: qué construir
 
 Gate: tests end-to-end con Playwright en verde en Chromium, Firefox y WebKit; Lighthouse PWA y accesibilidad ≥ 95; funciona en modo avión; prototipo aprobado por 2 docentes.
 
-1. **Decidir entre Svelte y Preact** (pendiente desde la etapa 0). El criterio es el presupuesto de 500 KB y la accesibilidad. **Proponer con justificación y esperar la confirmación de Takeshi antes de escribir código.**
+1. ~~Decidir entre Svelte y Preact~~ → **Svelte 5** (D-01).
 2. **`app/`**: Vite + vite-plugin-pwa (Workbox precache), manifiesto, íconos y un aviso de "Lista para usar sin conexión".
 3. **Pantallas:**
     - Formulario de entradas E1–E12, con el orden y los valores por defecto de la especificación.

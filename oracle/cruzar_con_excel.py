@@ -88,12 +88,14 @@ def main(xlsx):
             excel = {
                 "V": num(C, "B11"), "Re": num(C, "B12"), "f": num(C, "B16"), "f_sj": num(C, "B19"),
                 "hf_dw": num(H, "B5"), "hf_hw": num(H, "B12"), "h_loc": num(H, "B8"), "h_total": num(H, "B9"),
-                "dif_hw_dw": num(H, "B13"), "J": num(D, "G18"),
+                "dif_hw_dw": num(H, "B13"), "J": num(D, "G18"), "dif_sj": num(C, "B20"),
+                # Intermedios (Especificacion 1.1): caudal equivalente, mismas celdas que muestra el Excel.
+                "Q_m3h": num(D, "B28"), "Q_ls": num(D, "B29"), "Q_lh": num(D, "B31"),
                 "iteraciones": int(m.group(1)) if m else (0 if estado.startswith("Laminar") else -1),
             }
             reg = C.getCellRangeByName("B13").getString()
             excel_reg = "laminar" if reg.startswith("Laminar") else "transicion" if reg.startswith("Transición") else "turbulento"
-            esp = caso["esperado"]["resultados"]
+            esp = {**caso["esperado"]["intermedios"], **caso["esperado"]["resultados"]}
             problemas = []
             for k, v in excel.items():
                 ref = esp[k]

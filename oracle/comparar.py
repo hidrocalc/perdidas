@@ -1,14 +1,14 @@
 """Comparacion de resultados con tolerancia (misma regla que el motor TypeScript).
 
 Numeros: error relativo <= 1E-12 (mas exigente que el 1E-9 del contrato), salvo las
-restas de valores casi iguales ('delta', 'dif_hw_dw'), que usan error absoluto <= 1E-12.
+restas de valores casi iguales ('delta', 'dif_hw_dw', 'dif_sj'), que usan error absoluto <= 1E-12.
 Enteros de conteo ('iteraciones', 'i'), textos, codigos y estructura: exactos.
 """
 import math
 
 TOL_REL = 1e-12
 TOL_ABS_DIFERENCIAS = 1e-12
-CAMPOS_RESTA = {"delta", "dif_hw_dw"}
+CAMPOS_RESTA = {"delta", "dif_hw_dw", "dif_sj"}
 CAMPOS_ENTEROS = {"iteraciones", "i"}
 
 

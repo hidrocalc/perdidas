@@ -2,7 +2,7 @@
 
 App para calcular pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-White, Hazen-Williams y pérdidas localizadas), destinada a docentes y estudiantes de la Facultad de Agronomía. Todo el cálculo se deriva de la *Especificación técnica v1* y se verifica contra el Excel corregido.
 
-Estado: etapas 0 (especificación), 1 (oráculo y vectores) y 2 (motor TypeScript) completas. Sigue la etapa 3 (datos y unidades) y después la 4 (interfaz PWA).
+Estado: etapas 0 (especificación), 1 (oráculo y vectores) y 2 (motor TypeScript) completas. Etapa 4 (interfaz PWA en Svelte 5) en curso. Las decisiones técnicas se registran en [docs/DECISIONES.md](docs/DECISIONES.md).
 
 ## Decisiones de validación aplicadas
 
@@ -17,8 +17,9 @@ K adoptado = máximo del rango. C de Hazen-Williams: valores de tabla, con C man
 | `packages/core/src/` | Motor de cálculo en TypeScript puro (`@dw/core`), sin DOM ni framework |
 | `packages/core/test/` | Vectores del oráculo, propiedades físicas (fast-check) y casos puntuales |
 | `oracle/` | Oráculo de referencia en Python, exportador de tablas, generador de vectores y cruce con el Excel |
-| `test_vectors/` | 340 casos de cálculo y 34 de parseo: el contrato entre oráculo y motor |
-| `.github/workflows/ci.yml` | CI: oráculo, vectores sin cambios, typecheck, lint y cobertura |
+| `test_vectors/` | 343 casos de cálculo y 34 de parseo: el contrato entre oráculo y motor |
+| `app/` | Interfaz PWA (`@dw/app`): Svelte 5 + Vite + vite-plugin-pwa; tests unitarios en `app/test/` y Playwright en `app/e2e/` |
+| `.github/workflows/ci.yml` | CI: oráculo, vectores sin cambios, typecheck, lint, cobertura, build y Playwright en 3 motores |
 
 ## API del motor
 

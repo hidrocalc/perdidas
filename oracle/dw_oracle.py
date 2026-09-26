@@ -114,11 +114,16 @@ class Entrada:
     singularidades_extra: list = field(default_factory=list)
 
 
-def _rango(nombre, v, errores):
+def _error(codigo, campo, fila=None):
+    """Estructura de un error. 'fila': posicion (desde 0) de la singularidad, o None (Especificacion 1.1)."""
+    return {"codigo": codigo, "campo": campo, "fila": fila}
+
+
+def _rango(nombre, v, errores, campo=None, fila=None):
     lo, hi, _ = RANGOS[nombre]
     bad = (not math.isfinite(v)) or (v <= lo if nombre in EXCLUSIVO_MIN else v < lo) or v > hi
     if bad:
-        errores.append({"codigo": "E-RANGO", "campo": nombre})
+        errores.append(_error("E-RANGO", campo or nombre, fila))
 
 
 def _es_entero(n):
@@ -128,18 +133,18 @@ def _es_entero(n):
 def validar(e: Entrada):
     errores = []
     if e.tabla not in ("PVC", "PE", "Manual"):
-        errores.append({"codigo": "E-RANGO", "campo": "tabla"})
+        errores.append(_error("E-RANGO", "tabla"))
     elif e.tabla == "Manual":
         if e.di_manual is None:
-            errores.append({"codigo": "E-VACIO", "campo": "di_manual"})
+            errores.append(_error("E-VACIO", "di_manual"))
         else:
             _rango("di_manual", e.di_manual, errores)
     elif di_tabla_mm(e.tabla, e.dn, e.pn) is None:
-        errores.append({"codigo": "E-RANGO", "campo": "dn_pn"})
+        errores.append(_error("E-RANGO", "dn_pn"))
     try:
         material(e.material)
     except KeyError:
-        errores.append({"codigo": "E-RANGO", "campo": "material"})
+        errores.append(_error("E-RANGO", "material"))
     if e.k_manual is not None:
         _rango("k_manual", e.k_manual, errores)
     if e.c_manual is not None:
@@ -149,31 +154,29 @@ def validar(e: Entrada):
     try:
         _rango("Q_m3s", e.Q_valor * factor_caudal(e.Q_unidad), errores)
     except KeyError:
-        errores.append({"codigo": "E-RANGO", "campo": "Q_unidad"})
+        errores.append(_error("E-RANGO", "Q_unidad"))
     nombres = {s["singularidad"] for s in DATA["singularidades"]}
-    for nombre, n in e.cantidades.items():
+    for fila, (nombre, n) in enumerate(e.cantidades.items()):
         if nombre not in nombres or not _es_entero(n):
-            errores.append({"codigo": "E-RANGO", "campo": "cantidad"})
+            errores.append(_error("E-RANGO", "cantidad", fila))
         else:
-            _rango("cantidad", n, errores)
+            _rango("cantidad", n, errores, fila=fila)
     if len(e.singularidades_extra) > MAX_EXTRA:
-        errores.append({"codigo": "E-RANGO", "campo": "extra_max"})
-    for s in e.singularidades_extra:
+        errores.append(_error("E-RANGO", "extra_max"))
+    for fila, s in enumerate(e.singularidades_extra):
         nombre = s.get("nombre", "")
         if not isinstance(nombre, str) or len(nombre) > MAX_NOMBRE_EXTRA:
-            errores.append({"codigo": "E-RANGO", "campo": "extra_nombre"})
+            errores.append(_error("E-RANGO", "extra_nombre", fila))
         k = s.get("k")
         if k is None:
-            errores.append({"codigo": "E-VACIO", "campo": "extra_k"})
+            errores.append(_error("E-VACIO", "extra_k", fila))
         else:
-            _rango("extra_k", k, errores)
+            _rango("extra_k", k, errores, fila=fila)
         n = s.get("cantidad")
         if n is None or not _es_entero(n):
-            errores.append({"codigo": "E-RANGO", "campo": "extra_cantidad"})
+            errores.append(_error("E-RANGO", "extra_cantidad", fila))
         else:
-            lo, hi, _ = RANGOS["cantidad"]
-            if n < lo or n > hi:
-                errores.append({"codigo": "E-RANGO", "campo": "extra_cantidad"})
+            _rango("cantidad", n, errores, campo="extra_cantidad", fila=fila)
     return errores
 
 
@@ -224,7 +227,7 @@ def calcular(e: Entrada):
         try:
             f, iteraciones, f0, filas = colebrook(Re, K, D)
         except ArithmeticError:
-            return {"ok": False, "errores": [{"codigo": "E-NOCONV", "campo": None}]}
+            return {"ok": False, "errores": [_error("E-NOCONV", None)]}
     # Paso 8
     f_sj = 0.25 / (math.log10(K / (3.7 * D) + 5.74 / Re ** 0.9)) ** 2
     # Paso 9
@@ -261,9 +264,11 @@ def calcular(e: Entrada):
     return {
         "ok": True,
         "intermedios": {"D_m": D, "K_m": K, "C": C, "nu_m2s": nu, "Q_m3s": Q, "A_m2": A,
-                        "K_sobre_D": K / D, "f0": f0, "hv_m": hv, "suma_K": sumK},
+                        "K_sobre_D": K / D, "f0": f0, "hv_m": hv, "suma_K": sumK,
+                        # Equivalentes para mostrar: mismas formulas que el Excel (B28, B29, B31).
+                        "Q_m3h": Q * 3600, "Q_ls": Q * 1000, "Q_lh": Q * 3600000},
         "resultados": {"V": V, "Re": Re, "regimen": regimen, "f": f, "iteraciones": iteraciones,
-                       "f_sj": f_sj, "hf_dw": hf, "hf_hw": hf_hw, "dif_hw_dw": hf_hw / hf - 1,
+                       "f_sj": f_sj, "dif_sj": f_sj / f - 1, "hf_dw": hf, "hf_hw": hf_hw, "dif_hw_dw": hf_hw / hf - 1,
                        "h_loc": hloc, "h_total": total, "J": J, "hf_100m": J * 100},
         "advertencias": adv,
         "iteraciones_detalle": filas,

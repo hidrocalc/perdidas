@@ -54,55 +54,58 @@ export type Validacion =
 /** Mismo orden de verificación que el oráculo: el orden de los errores es parte del contrato. */
 export function validar(e: Entrada): Validacion {
   const errores: ErrorEntrada[] = [];
-  const rango = (campo: CampoError, v: number, r: Rango): void => {
-    if (fueraDeRango(v, r)) errores.push({ codigo: "E-RANGO", campo });
+  const error = (codigo: ErrorEntrada["codigo"], campo: CampoError, fila: number | null = null): void => {
+    errores.push({ codigo, campo, fila });
+  };
+  const rango = (campo: CampoError, v: number, r: Rango, fila: number | null = null): void => {
+    if (fueraDeRango(v, r)) error("E-RANGO", campo, fila);
   };
 
   let di: number | undefined;
   if (e.tabla !== "PVC" && e.tabla !== "PE" && e.tabla !== "Manual") {
-    errores.push({ codigo: "E-RANGO", campo: "tabla" });
+    error("E-RANGO", "tabla");
   } else if (e.tabla === "Manual") {
-    if (e.di_manual === null) errores.push({ codigo: "E-VACIO", campo: "di_manual" });
+    if (e.di_manual === null) error("E-VACIO", "di_manual");
     else {
       rango("di_manual", e.di_manual, RANGOS.di_manual);
       di = e.di_manual;
     }
   } else {
     di = e.dn === null || e.pn === null ? undefined : diTablaMm(e.tabla, e.dn, e.pn);
-    if (di === undefined) errores.push({ codigo: "E-RANGO", campo: "dn_pn" });
+    if (di === undefined) error("E-RANGO", "dn_pn");
   }
 
   const material = buscarMaterial(e.material);
-  if (material === undefined) errores.push({ codigo: "E-RANGO", campo: "material" });
+  if (material === undefined) error("E-RANGO", "material");
   if (e.k_manual !== null) rango("k_manual", e.k_manual, RANGOS.k_manual);
   if (e.c_manual !== null) rango("c_manual", e.c_manual, RANGOS.c_manual);
   rango("L", e.L, RANGOS.L);
   rango("T", e.T, RANGOS.T);
 
   const factor = factorCaudal(e.Q_unidad);
-  if (factor === undefined) errores.push({ codigo: "E-RANGO", campo: "Q_unidad" });
+  if (factor === undefined) error("E-RANGO", "Q_unidad");
   else rango("Q_m3s", e.Q_valor * factor, RANGOS.Q_m3s);
 
   const singularidades: { n: number; k: number }[] = [];
-  for (const [nombre, n] of Object.entries(e.cantidades)) {
+  for (const [fila, [nombre, n]] of Object.entries(e.cantidades).entries()) {
     const k = kSingularidad(nombre);
     if (k === undefined || !Number.isInteger(n)) {
-      errores.push({ codigo: "E-RANGO", campo: "cantidad" });
+      error("E-RANGO", "cantidad", fila);
     } else {
-      rango("cantidad", n, RANGOS.cantidad);
+      rango("cantidad", n, RANGOS.cantidad, fila);
       singularidades.push({ n, k });
     }
   }
 
-  if (e.singularidades_extra.length > MAX_SINGULARIDADES_EXTRA) errores.push({ codigo: "E-RANGO", campo: "extra_max" });
-  for (const x of e.singularidades_extra) {
+  if (e.singularidades_extra.length > MAX_SINGULARIDADES_EXTRA) error("E-RANGO", "extra_max");
+  for (const [fila, x] of e.singularidades_extra.entries()) {
     if (typeof x.nombre !== "string" || x.nombre.length > MAX_NOMBRE_EXTRA) {
-      errores.push({ codigo: "E-RANGO", campo: "extra_nombre" });
+      error("E-RANGO", "extra_nombre", fila);
     }
-    if (x.k === null) errores.push({ codigo: "E-VACIO", campo: "extra_k" });
-    else rango("extra_k", x.k, RANGOS.extra_k);
-    if (x.cantidad === null || !Number.isInteger(x.cantidad)) errores.push({ codigo: "E-RANGO", campo: "extra_cantidad" });
-    else rango("extra_cantidad", x.cantidad, RANGOS.cantidad);
+    if (x.k === null) error("E-VACIO", "extra_k", fila);
+    else rango("extra_k", x.k, RANGOS.extra_k, fila);
+    if (x.cantidad === null || !Number.isInteger(x.cantidad)) error("E-RANGO", "extra_cantidad", fila);
+    else rango("extra_cantidad", x.cantidad, RANGOS.cantidad, fila);
     if (x.k !== null && x.cantidad !== null) singularidades.push({ n: x.cantidad, k: x.k });
   }
 

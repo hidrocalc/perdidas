@@ -28,7 +28,7 @@ function diferencia(real: unknown, esperado: unknown, ruta = "$"): string | null
     }
     // Campos que son una resta de valores casi iguales: el error relativo se amplifica por
     // cancelación, así que se comparan con error absoluto (Especificación, Criterios de aceptación).
-    if (ruta.endsWith(".delta") || ruta.endsWith(".dif_hw_dw")) {
+    if (ruta.endsWith(".delta") || ruta.endsWith(".dif_hw_dw") || ruta.endsWith(".dif_sj")) {
       const abs = Math.abs(real - esperado);
       return abs <= TOL_ABS_DIFERENCIAS ? null : `${ruta}: ${real} vs ${esperado} (abs ${abs.toExponential(2)})`;
     }

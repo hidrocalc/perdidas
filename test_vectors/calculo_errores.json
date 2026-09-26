@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version_especificacion": "1.0",
+  "version_especificacion": "1.1",
   "version_tablas": "1.0.0",
   "tolerancia_relativa": 1e-09,
   "semilla": 20260925
@@ -32,7 +32,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "L"
+      "campo": "L",
+      "fila": null
      }
     ]
    }
@@ -63,7 +64,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "L"
+      "campo": "L",
+      "fila": null
      }
     ]
    }
@@ -94,7 +96,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "L"
+      "campo": "L",
+      "fila": null
      }
     ]
    }
@@ -125,7 +128,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "T"
+      "campo": "T",
+      "fila": null
      }
     ]
    }
@@ -156,7 +160,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "T"
+      "campo": "T",
+      "fila": null
      }
     ]
    }
@@ -187,7 +192,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "Q_m3s"
+      "campo": "Q_m3s",
+      "fila": null
      }
     ]
    }
@@ -218,7 +224,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "Q_m3s"
+      "campo": "Q_m3s",
+      "fila": null
      }
     ]
    }
@@ -249,7 +256,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "Q_m3s"
+      "campo": "Q_m3s",
+      "fila": null
      }
     ]
    }
@@ -280,7 +288,8 @@
     "errores": [
      {
       "codigo": "E-VACIO",
-      "campo": "di_manual"
+      "campo": "di_manual",
+      "fila": null
      }
     ]
    }
@@ -311,7 +320,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "di_manual"
+      "campo": "di_manual",
+      "fila": null
      }
     ]
    }
@@ -342,7 +352,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "di_manual"
+      "campo": "di_manual",
+      "fila": null
      }
     ]
    }
@@ -373,7 +384,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "k_manual"
+      "campo": "k_manual",
+      "fila": null
      }
     ]
    }
@@ -404,7 +416,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "k_manual"
+      "campo": "k_manual",
+      "fila": null
      }
     ]
    }
@@ -435,7 +448,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "c_manual"
+      "campo": "c_manual",
+      "fila": null
      }
     ]
    }
@@ -466,7 +480,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "c_manual"
+      "campo": "c_manual",
+      "fila": null
      }
     ]
    }
@@ -497,7 +512,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "dn_pn"
+      "campo": "dn_pn",
+      "fila": null
      }
     ]
    }
@@ -528,7 +544,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "dn_pn"
+      "campo": "dn_pn",
+      "fila": null
      }
     ]
    }
@@ -559,7 +576,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "material"
+      "campo": "material",
+      "fila": null
      }
     ]
    }
@@ -590,7 +608,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "Q_unidad"
+      "campo": "Q_unidad",
+      "fila": null
      }
     ]
    }
@@ -620,7 +639,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "cantidad"
+      "campo": "cantidad",
+      "fila": 0
      }
     ]
    }
@@ -650,7 +670,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "cantidad"
+      "campo": "cantidad",
+      "fila": 0
      }
     ]
    }
@@ -680,7 +701,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "cantidad"
+      "campo": "cantidad",
+      "fila": 0
      }
     ]
    }
@@ -711,11 +733,13 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "L"
+      "campo": "L",
+      "fila": null
      },
      {
       "codigo": "E-RANGO",
-      "campo": "T"
+      "campo": "T",
+      "fila": null
      }
     ]
    }
@@ -752,7 +776,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_k"
+      "campo": "extra_k",
+      "fila": 0
      }
     ]
    }
@@ -789,7 +814,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_k"
+      "campo": "extra_k",
+      "fila": 0
      }
     ]
    }
@@ -826,7 +852,8 @@
     "errores": [
      {
       "codigo": "E-VACIO",
-      "campo": "extra_k"
+      "campo": "extra_k",
+      "fila": 0
      }
     ]
    }
@@ -863,7 +890,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_cantidad"
+      "campo": "extra_cantidad",
+      "fila": 0
      }
     ]
    }
@@ -900,7 +928,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_cantidad"
+      "campo": "extra_cantidad",
+      "fila": 0
      }
     ]
    }
@@ -937,13 +966,143 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_nombre"
+      "campo": "extra_nombre",
+      "fila": 0
      }
     ]
    }
   },
   {
    "id": "ERR-030",
+   "descripcion": "Error en la tercera cantidad de tabla (fila 2)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1,
+     "Codo 90° radio estándar": -1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "cantidad",
+      "fila": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-031",
+   "descripcion": "Error en la segunda singularidad propia (fila 1)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "Bien",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "Mal",
+      "k": -1,
+      "cantidad": 2
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_k",
+      "fila": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-032",
+   "descripcion": "Errores en dos filas propias distintas (filas 0 y 2)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "A",
+      "k": null,
+      "cantidad": 1
+     },
+     {
+      "nombre": "B",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "C",
+      "k": 1,
+      "cantidad": 1000
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-VACIO",
+      "campo": "extra_k",
+      "fila": 0
+     },
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_cantidad",
+      "fila": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-033",
    "descripcion": "11 singularidades propias (máximo 10)",
    "entrada": {
     "tabla": "PVC",
@@ -1024,7 +1183,8 @@
     "errores": [
      {
       "codigo": "E-RANGO",
-      "campo": "extra_max"
+      "campo": "extra_max",
+      "fila": null
      }
     ]
    }

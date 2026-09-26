@@ -77,7 +77,7 @@ export function calcularValidada(v: EntradaValidada): Calculo {
     filas = [];
   } else {
     const cb = colebrook(Re, K, D);
-    if (!cb.ok) return { ok: false, errores: [{ codigo: "E-NOCONV", campo: null }] };
+    if (!cb.ok) return { ok: false, errores: [{ codigo: "E-NOCONV", campo: null, fila: null }] };
     ({ f, iteraciones, f0, filas } = cb);
   }
   // Paso 8
@@ -97,9 +97,13 @@ export function calcularValidada(v: EntradaValidada): Calculo {
 
   return {
     ok: true,
-    intermedios: { D_m: D, K_m: K, C, nu_m2s: nu, Q_m3s: Q, A_m2: A, K_sobre_D: K / D, f0, hv_m: hv, suma_K: sumaK },
+    intermedios: {
+      D_m: D, K_m: K, C, nu_m2s: nu, Q_m3s: Q, A_m2: A, K_sobre_D: K / D, f0, hv_m: hv, suma_K: sumaK,
+      // Equivalentes para mostrar: mismas fórmulas que el Excel (B28, B29, B31).
+      Q_m3h: Q * 3600, Q_ls: Q * 1000, Q_lh: Q * 3600000,
+    },
     resultados: {
-      V, Re, regimen, f, iteraciones, f_sj, hf_dw: hf, hf_hw, dif_hw_dw: hf_hw / hf - 1,
+      V, Re, regimen, f, iteraciones, f_sj, dif_sj: f_sj / f - 1, hf_dw: hf, hf_hw, dif_hw_dw: hf_hw / hf - 1,
       h_loc: hloc, h_total: total, J, hf_100m: J * 100,
     },
     advertencias,

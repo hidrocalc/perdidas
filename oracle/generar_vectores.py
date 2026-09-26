@@ -142,6 +142,13 @@ add("errores", "Singularidad propia con cantidad no entera", singularidades_extr
 add("errores", "Singularidad propia con cantidad > 999", singularidades_extra=[{"nombre": "X", "k": 1, "cantidad": 1000}])
 add("errores", "Singularidad propia con nombre de más de 60 caracteres",
     singularidades_extra=[{"nombre": "x" * 61, "k": 1, "cantidad": 1}])
+add("errores", "Error en la tercera cantidad de tabla (fila 2)",
+    cantidades={SING[0]: 1, SING[3]: 1, SING[4]: -1})
+add("errores", "Error en la segunda singularidad propia (fila 1)",
+    singularidades_extra=[{"nombre": "Bien", "k": 1, "cantidad": 1}, {"nombre": "Mal", "k": -1, "cantidad": 2}])
+add("errores", "Errores en dos filas propias distintas (filas 0 y 2)",
+    singularidades_extra=[{"nombre": "A", "k": None, "cantidad": 1}, {"nombre": "B", "k": 1, "cantidad": 1},
+                          {"nombre": "C", "k": 1, "cantidad": 1000}])
 add("errores", "11 singularidades propias (máximo 10)",
     singularidades_extra=[{"nombre": f"S{j}", "k": 1, "cantidad": 1} for j in range(11)])
 
@@ -182,7 +189,7 @@ if "--verificar" in sys.argv:
     sys.exit(1 if fallas else 0)
 
 OUT.mkdir(exist_ok=True)
-meta = {"version_especificacion": "1.0", "version_tablas": o.DATA["version_tablas"],
+meta = {"version_especificacion": "1.1", "version_tablas": o.DATA["version_tablas"],
         "tolerancia_relativa": 1e-9, "semilla": 20260925}
 total = 0
 for cat, lista in casos.items():
