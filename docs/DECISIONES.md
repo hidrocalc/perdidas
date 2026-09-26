@@ -6,6 +6,8 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-18 | 2026-09-25 | Tabla de iteraciones desplazable y enfocable | Vigente |
+| D-17 | 2026-09-25 | Paso a paso con 6 cifras significativas y notación E | Vigente |
 | D-16 | 2026-09-25 | Barra fija con la pérdida total en pantallas angostas | Vigente |
 | D-15 | 2026-09-25 | Decimales del caudal equivalente | Vigente |
 | D-14 | 2026-09-25 | Regla `no-useless-default-assignment` apagada en `.svelte` | Vigente |
@@ -24,6 +26,22 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-18 · Tabla de iteraciones desplazable y enfocable
+
+**Contexto.** A 360 px la tabla de iteraciones puede desbordar. Una región con scroll horizontal tiene que poder recibir el foco para moverla con el teclado (WCAG 2.1.1, regla `scrollable-region-focusable` de axe). El compilador de Svelte avisa que un `div` con `tabindex="0"` no es interactivo.
+
+**Decisión.** El contenedor lleva `role="region"`, nombre (el `caption` de la tabla) y `tabindex="0"`. Se ignora solo ese aviso de Svelte, con un comentario en el código que lo justifica. Es la única excepción a D-03.
+
+## D-17 · Paso a paso con 6 cifras significativas y notación E
+
+**Decisión.** Los valores intermedios (D, K, ν, Q, A, V, K/D, f₀, hv, ΣK) se muestran con 6 cifras significativas. Entre 1E-4 y 1E7 van en decimal (0,169400); fuera de ese rango, en notación E como el Excel y la especificación (1,00400E-6 m²/s). Los resultados finales repiten el formato de la tabla de resultados. En la tabla de iteraciones: f con 8 decimales y |Δf| con 3 cifras (3,95E-7), para que se vea el criterio de parada (< 1E-6).
+
+**Por qué.** Los alumnos conocen la notación E del Excel. La alternativa "1,004 × 10⁻⁶" se lee mal con lectores de pantalla.
+
+**Forma.** Un `<details>` cerrado por defecto ("Ver el cálculo paso a paso"): accesible con teclado de forma nativa y no alarga la página para quien solo quiere el resultado.
+
+**Verificación.** Los valores de referencia de los tests (A, V, f final, |Δf| final) salen del oráculo en Python, no de la app.
 
 ## D-16 · Barra fija con la pérdida total en pantallas angostas
 

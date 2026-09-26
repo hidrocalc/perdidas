@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("los 14 resultados con los datos por defecto (ejemplo de la especificación)", async ({ page }) => {
-  const lista = page.locator(".resultados dl");
+  const lista = page.locator(".resultados dl.lista");
   const esperado: [string, string][] = [
     ["Velocidad V", `3,451${NB}m/s`],
     ["Control de velocidad", `ALTA (> 2,5${NB}m/s)`],
@@ -69,6 +69,21 @@ test("barra con la pérdida total solo en pantallas angostas", async ({ page }) 
 
 test("resultados sin problemas de accesibilidad (con advertencias)", async ({ page }) => {
   await page.getByLabel("Caudal Q").fill("100");
+  const resultado = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+  expect(resultado.violations).toEqual([]);
+});
+
+test("paso a paso: se abre con el teclado y muestra la tabla de iteraciones", async ({ page }) => {
+  const resumen = page.getByText("Ver el cálculo paso a paso");
+  await resumen.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("heading", { name: "7. Factor de fricción" })).toBeVisible();
+
+  const tabla = page.getByRole("table", { name: /Iteraciones de Colebrook/ });
+  await expect(tabla.locator("tbody tr")).toHaveCount(4);
+  // Última iteración: f y |Δf| de referencia del oráculo en Python.
+  await expect(tabla.locator("tbody tr").last().locator("td")).toHaveText([/^0,0143\d{4}$/, "0,01438396", "3,95E-7"]);
+
   const resultado = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
   expect(resultado.violations).toEqual([]);
 });

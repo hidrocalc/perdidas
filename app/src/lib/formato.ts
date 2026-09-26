@@ -83,6 +83,34 @@ export function formatearPorcentaje(fraccion: number, decimales: number, opcione
 }
 
 /**
+ * Valor con `cifras` cifras significativas, para los intermedios del paso a paso.
+ * Entre 1E-4 y 1E7 se escribe en decimal ("0,169400", "582 262"); fuera de ese rango,
+ * en notación E como el Excel y la especificación ("1,00400E-6").
+ */
+export function formatearSignificativas(x: number, cifras: number): string {
+  if (!Number.isFinite(x)) return SIN_VALOR;
+  if (x === 0) return formatearNumero(0, cifras - 1);
+  const { digitos, enteros } = digitosDe(x);
+  const primero = digitos.search(/[1-9]/);
+  const exponente = enteros - 1 - primero;
+  if (exponente >= -4 && exponente < 7) {
+    const texto = formatearNumero(x, Math.max(0, cifras - 1 - exponente));
+    // Si el redondeo sumó una cifra (9,99996 → 10,0000), se saca un decimal.
+    const cifrasTexto = texto.replace(/[^\d]/g, "").replace(/^0+/, "").length;
+    return cifrasTexto > cifras && texto.includes(",") ? formatearNumero(x, Math.max(0, cifras - 2 - exponente)) : texto;
+  }
+  const [mantisa = "", exp = "0"] = x.toExponential(14).split("e");
+  let m = formatearNumero(Number(mantisa), cifras - 1);
+  let e = Number(exp);
+  if (/^−?10/.test(m)) {
+    // 9,9999996E-6 redondeado da "10,00…": se normaliza a "1,00…E-5".
+    m = formatearNumero(Number(mantisa) / 10, cifras - 1);
+    e += 1;
+  }
+  return `${m}E${e < 0 ? "-" : ""}${Math.abs(e)}`;
+}
+
+/**
  * Valor interpretado de un campo, con todos sus decimales significativos:
  * "280.000" se interpreta como 280 y se muestra "280"; "280000" se muestra "280 000".
  */

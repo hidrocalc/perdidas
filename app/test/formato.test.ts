@@ -2,7 +2,8 @@ import { calcular, ENTRADA_POR_DEFECTO } from "@dw/core";
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import {
-  ESPACIO_DURO, ESPACIO_FINO, formatearEntero, formatearInterpretado, formatearNumero, formatearPorcentaje, MENOS, SIN_VALOR,
+  ESPACIO_DURO, ESPACIO_FINO, formatearEntero, formatearInterpretado, formatearNumero, formatearPorcentaje,
+  formatearSignificativas, MENOS, SIN_VALOR,
 } from "../src/lib/formato";
 
 /** Escribe los ejemplos con espacios y "-" comunes; el formato real usa los tipográficos. */
@@ -103,5 +104,27 @@ describe("formatearInterpretado (valor que la app entendió)", () => {
     [100000, "100 000"],
   ])("%d → %s", (x, esperado) => {
     expect(formatearInterpretado(x)).toBe(tip(esperado));
+  });
+});
+
+describe("formatearSignificativas (paso a paso)", () => {
+  it.each([
+    [1.004e-6, 4, "1,004E-6"],
+    [0.1694, 6, "0,169400"],
+    [582262.28, 6, "582 262"],
+    [1.18e-5, 5, "1,1800E-5"],
+    [0.0001, 4, "0,0001000"],
+    [12345678, 3, "1,23E7"],
+    [0, 6, "0,00000"],
+    [9.999996, 6, "10,0000"],
+    [9.9999996e-6, 3, "1,00E-5"],
+    [-2.5e-8, 2, "-2,5E-8"],
+    [0.0224, 6, "0,0224000"],
+  ])("%d con %i cifras → %s", (x, cifras, esperado) => {
+    expect(formatearSignificativas(x, cifras)).toBe(tip(esperado));
+  });
+
+  it("nunca muestra NaN", () => {
+    expect(formatearSignificativas(Number.NaN, 3)).toBe(SIN_VALOR);
   });
 });

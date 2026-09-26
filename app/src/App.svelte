@@ -2,6 +2,7 @@
   import { TABLAS } from "@dw/data";
   import AvisoPWA from "./componentes/AvisoPWA.svelte";
   import Formulario from "./componentes/Formulario.svelte";
+  import PasoAPaso from "./componentes/PasoAPaso.svelte";
   import BarraTotal from "./componentes/BarraTotal.svelte";
   import Resultados from "./componentes/Resultados.svelte";
   import ResumenErrores from "./componentes/ResumenErrores.svelte";
@@ -33,6 +34,14 @@
         intermedios={calculoOk.intermedios}
         advertencias={calculoOk.advertencias}
       />
+      {#if evaluacion.lectura.entrada !== null}
+        <PasoAPaso
+          entrada={evaluacion.lectura.entrada}
+          intermedios={calculoOk.intermedios}
+          resultados={calculoOk.resultados}
+          iteraciones={calculoOk.iteraciones_detalle}
+        />
+      {/if}
     {:else}
       <ResumenErrores errores={evaluacion.errores} />
     {/if}
