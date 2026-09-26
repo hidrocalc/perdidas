@@ -4,11 +4,12 @@ Contexto para continuar el desarrollo con Claude Code. Leer entero antes de toca
 
 ## Qué es
 
-Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-White, Hazen-Williams y pérdidas localizadas) para docentes y estudiantes de la Facultad de Agronomía. Migra el Excel `Darcy Weisbach - corregido.xlsx`, que está en la carpeta padre (`..\`) y es la fuente de verdad de las tablas.
+Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-White, Hazen-Williams y pérdidas localizadas) para docentes y estudiantes de la Facultad de Agronomía. Migra el Excel `C:\Users\Take\OneDrive\Proyectos\DarcyWeisbach\Darcy Weisbach - corregido.xlsx`, que es la fuente de verdad de las tablas. El repo vive en `C:\dev\perdidas` (fuera de OneDrive a propósito).
 
 - Repo: https://github.com/hidrocalc/perdidas (público, licencia MIT, titular Takeshi; su madre, docente usuaria, es co-propietaria de la organización).
-- Especificación técnica v1 (congelada): https://claude.ai/code/artifact/70c3d3cb-e28b-4f01-b4ee-1ca7243a3f87
-- Plan de desarrollo: https://claude.ai/code/artifact/b9d0e5ec-c7f9-4aed-b05e-a059f9492976
+- **Especificación técnica v1 (congelada): [`docs/ESPECIFICACION.md`](docs/ESPECIFICACION.md).** Es la referencia para todo el código: entradas y rangos, algoritmo paso a paso, formatos de resultados y textos exactos de errores y advertencias. Leerla antes de escribir la interfaz.
+- Plan de desarrollo: [`docs/PLAN.md`](docs/PLAN.md).
+- Los originales están en claude.ai (Claude Code no puede abrirlos; las copias en `docs/` son las que valen).
 
 ## Restricciones del proyecto (no negociables)
 
@@ -48,7 +49,7 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 
 - `packages/core` (`@dw/core`): motor en TypeScript puro, sin DOM. **La interfaz nunca calcula**: solo llama a `calcular()` y `parseNumero()`.
 - `packages/data`: `tablas.json`, generado por `oracle/export_tables.py` desde el Excel. **Nunca se edita a mano.**
-- `oracle/`: implementación de referencia en Python. Es el que genera `test_vectors/`.
+- `oracle/`: implementación de referencia en Python. Es el que genera `test_vectors/`; `oracle/comparar.py` define la tolerancia.
 - Contrato: el motor reproduce los vectores con error relativo ≤ 1E-9 (las restas, con absoluto ≤ 1E-12).
 - Solo `validar()` produce `EntradaValidada`, un tipo con marca: no se calcula nada sin validar.
 - `calcular()` nunca lanza excepciones: devuelve `{ ok, resultados, advertencias }` o `{ ok: false, errores }`.
@@ -59,10 +60,10 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 
 1. Actualizar la especificación.
 2. Actualizar el Excel.
-3. `python oracle/export_tables.py "..\Darcy Weisbach - corregido.xlsx"`.
+3. `python oracle/export_tables.py "C:\Users\Take\OneDrive\Proyectos\DarcyWeisbach\Darcy Weisbach - corregido.xlsx"`.
 4. `python oracle/generar_vectores.py`.
 5. `pnpm check`.
-6. `python oracle/cruzar_con_excel.py "..\Darcy Weisbach - corregido.xlsx"` (requiere LibreOffice).
+6. `python oracle/cruzar_con_excel.py "C:\Users\Take\OneDrive\Proyectos\DarcyWeisbach\Darcy Weisbach - corregido.xlsx"` (requiere LibreOffice).
 
 ## Comandos
 
@@ -86,7 +87,7 @@ La CI (`.github/workflows/ci.yml`) corre en cada push: oráculo en Python 3.12, 
 
 Gate: tests end-to-end con Playwright en verde en Chromium, Firefox y WebKit; Lighthouse PWA y accesibilidad ≥ 95; funciona en modo avión; prototipo aprobado por 2 docentes.
 
-1. **Decidir entre Svelte y Preact** (pendiente desde la etapa 0). El criterio es el presupuesto de 500 KB y la accesibilidad.
+1. **Decidir entre Svelte y Preact** (pendiente desde la etapa 0). El criterio es el presupuesto de 500 KB y la accesibilidad. **Proponer con justificación y esperar la confirmación de Takeshi antes de escribir código.**
 2. **`app/`**: Vite + vite-plugin-pwa (Workbox precache), manifiesto, íconos y un aviso de "Lista para usar sin conexión".
 3. **Pantallas:**
     - Formulario de entradas E1–E12, con el orden y los valores por defecto de la especificación.
@@ -99,6 +100,8 @@ Gate: tests end-to-end con Playwright en verde en Chromium, Firefox y WebKit; Li
 5. **Tests:** Playwright en 3 motores × 3 viewports (360, 768 y 1920 px), modo offline, axe-core y regresión visual. Agregarlos a la CI.
 6. **Despliegue:** GitHub Pages desde la CI (rama `main`), con URL `https://hidrocalc.github.io/perdidas/`.
 
-## Sobre la carpeta
+## Entorno de Takeshi
 
-El repo está dentro de OneDrive. Si aparecen bloqueos de archivos o conflictos en `.git` o `node_modules`, mover el repo a una carpeta fuera de OneDrive (por ejemplo `C:\dev\perdidas`).
+- Windows, PowerShell, Node 22 o superior, pnpm **10.28.0** (no actualizar a 12: el proyecto y la CI están fijados a 10.28.0).
+- Takeshi es analista de datos y BI (Power BI, SQL, Python). Tiene menos experiencia en frontend: explicar las decisiones de UI y de tooling de forma práctica, con ejemplos, en español y en tablas cuando ayuden.
+- Repo en GitHub: organización `hidrocalc`, repo `perdidas`, rama `main`. La CI está en verde desde el run 2.
