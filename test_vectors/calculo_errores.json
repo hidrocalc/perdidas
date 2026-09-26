@@ -1,0 +1,1033 @@
+{
+ "meta": {
+  "version_especificacion": "1.0",
+  "version_tablas": "1.0.0",
+  "tolerancia_relativa": 1e-09,
+  "semilla": 20260925
+ },
+ "casos": [
+  {
+   "id": "ERR-001",
+   "descripcion": "L = 0",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 0,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "L"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-002",
+   "descripcion": "L negativa",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": -1,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "L"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-003",
+   "descripcion": "L > 100 000",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 100000.1,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "L"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-004",
+   "descripcion": "T < 0",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": -0.1,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "T"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-005",
+   "descripcion": "T > 60",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 60.1,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "T"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-006",
+   "descripcion": "Q = 0",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "Q_m3s"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-007",
+   "descripcion": "Q negativo",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": -5,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "Q_m3s"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-008",
+   "descripcion": "Q > 10 m³/s",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 10.0001,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "Q_m3s"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-009",
+   "descripcion": "Tabla Manual sin DI",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-VACIO",
+      "campo": "di_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-010",
+   "descripcion": "DI manual < 1 mm",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 0.5,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "di_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-011",
+   "descripcion": "DI manual > 5000 mm",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 5000.1,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "di_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-012",
+   "descripcion": "K manual negativo",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": -0.001,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "k_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-013",
+   "descripcion": "K manual > 50 mm",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": 50.1,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "k_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-014",
+   "descripcion": "C manual < 50",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": 49.9,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "c_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-015",
+   "descripcion": "C manual > 160",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": 160.1,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "c_manual"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-016",
+   "descripcion": "Combinación DN/PN inexistente (PVC 500 PN 16)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 500,
+    "pn": 16,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "dn_pn"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-017",
+   "descripcion": "Combinación DN/PN inexistente (PE 10 PN 10)",
+   "entrada": {
+    "tabla": "PE",
+    "dn": 10,
+    "pn": 10,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "dn_pn"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-018",
+   "descripcion": "Material inexistente",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Madera",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "material"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-019",
+   "descripcion": "Unidad de caudal inexistente",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "ft³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "Q_unidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-020",
+   "descripcion": "Cantidad de singularidad negativa",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Codo 90° radio estándar": -1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "cantidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-021",
+   "descripcion": "Cantidad de singularidad > 999",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Codo 90° radio estándar": 1000
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "cantidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-022",
+   "descripcion": "Cantidad de singularidad no entera",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Codo 90° radio estándar": 1.5
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "cantidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-023",
+   "descripcion": "Varios errores a la vez (L = 0, T = 70)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 0,
+    "T": 70,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "L"
+     },
+     {
+      "codigo": "E-RANGO",
+      "campo": "T"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-024",
+   "descripcion": "Singularidad propia con K negativo",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "X",
+      "k": -0.1,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_k"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-025",
+   "descripcion": "Singularidad propia con K > 100",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "X",
+      "k": 100.1,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_k"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-026",
+   "descripcion": "Singularidad propia sin K",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "X",
+      "k": null,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-VACIO",
+      "campo": "extra_k"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-027",
+   "descripcion": "Singularidad propia con cantidad no entera",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "X",
+      "k": 1,
+      "cantidad": 1.5
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_cantidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-028",
+   "descripcion": "Singularidad propia con cantidad > 999",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "X",
+      "k": 1,
+      "cantidad": 1000
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_cantidad"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-029",
+   "descripcion": "Singularidad propia con nombre de más de 60 caracteres",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "k": 1,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_nombre"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ERR-030",
+   "descripcion": "11 singularidades propias (máximo 10)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "S0",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S1",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S2",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S3",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S4",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S5",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S6",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S7",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S8",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S9",
+      "k": 1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S10",
+      "k": 1,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": false,
+    "errores": [
+     {
+      "codigo": "E-RANGO",
+      "campo": "extra_max"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,2417 @@
+{
+ "meta": {
+  "version_especificacion": "1.0",
+  "version_tablas": "1.0.0",
+  "tolerancia_relativa": 1e-09,
+  "semilla": 20260925
+ },
+ "casos": [
+  {
+   "id": "BOR-001",
+   "descripcion": "Re ≈ 100 (DI manual 100 mm, 20 °C)",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 7.885397560510381e-06,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 7.885397560510381e-06,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.0002,
+     "f0": null,
+     "hv_m": 5.137696228338429e-08,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.001004,
+     "Re": 100.0,
+     "regimen": "laminar",
+     "f": 0.64,
+     "iteraciones": 0,
+     "f_sj": 0.23077050059152135,
+     "hf_dw": 1.6440627930682974e-05,
+     "hf_hw": 1.3070640670765272e-06,
+     "dif_hw_dw": -0.9204979230363113,
+     "h_loc": 9.145099286442403e-08,
+     "h_total": 1.65320789235474e-05,
+     "J": 3.288125586136595e-07,
+     "hf_100m": 3.288125586136595e-05
+    },
+    "advertencias": [
+     "A-LAMINAR",
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": []
+   }
+  },
+  {
+   "id": "BOR-002",
+   "descripcion": "Re ≈ 1999.9 (DI manual 100 mm, 20 °C)",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0.00015770006581264717,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.00015770006581264717,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.0002,
+     "f0": null,
+     "hv_m": 2.0548729886239363e-05,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.02007899600000001,
+     "Re": 1999.900000000001,
+     "regimen": "laminar",
+     "f": 0.03200160008000399,
+     "iteraciones": 0,
+     "f_sj": 0.05127056587724488,
+     "hf_dw": 0.00032879611798572895,
+     "hf_hw": 0.0003355553834612872,
+     "dif_hw_dw": 0.020557619466333277,
+     "h_loc": 3.6576739197506066e-05,
+     "h_total": 0.000365372857183235,
+     "J": 6.575922359714579e-06,
+     "hf_100m": 0.0006575922359714579
+    },
+    "advertencias": [
+     "A-LAMINAR",
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": []
+   }
+  },
+  {
+   "id": "BOR-003",
+   "descripcion": "Re ≈ 2000.1 (DI manual 100 mm, 20 °C)",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0.00015771583660776815,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.00015771583660776815,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.0002,
+     "f0": 0.01372211957272518,
+     "hv_m": 2.0552840043222018e-05,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.020081004,
+     "Re": 2000.1000000000001,
+     "regimen": "transicion",
+     "f": 0.04960293991570547,
+     "iteraciones": 8,
+     "f_sj": 0.05126876671915032,
+     "hf_dw": 0.0005097406448805236,
+     "hf_hw": 0.0003356175340733249,
+     "dif_hw_dw": -0.3415915771205783,
+     "h_loc": 3.658405527693519e-05,
+     "h_total": 0.0005463247001574588,
+     "J": 1.0194812897610473e-05,
+     "hf_100m": 0.0010194812897610472
+    },
+    "advertencias": [
+     "A-TRANSICION",
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.01372211957272518,
+      "f_out": 0.06455503589477114,
+      "delta": 0.050832916322045965
+     },
+     {
+      "i": 2,
+      "f_in": 0.06455503589477114,
+      "f_out": 0.04719212014167396,
+      "delta": 0.01736291575309718
+     },
+     {
+      "i": 3,
+      "f_in": 0.04719212014167396,
+      "f_out": 0.050080113052672175,
+      "delta": 0.0028879929109982133
+     },
+     {
+      "i": 4,
+      "f_in": 0.050080113052672175,
+      "f_out": 0.04951221548808527,
+      "delta": 0.0005678975645869028
+     },
+     {
+      "i": 5,
+      "f_in": 0.04951221548808527,
+      "f_out": 0.04962049094284926,
+      "delta": 0.00010827545476398831
+     },
+     {
+      "i": 6,
+      "f_in": 0.04962049094284926,
+      "f_out": 0.04959972369119143,
+      "delta": 2.0767251657831387e-05
+     },
+     {
+      "i": 7,
+      "f_in": 0.04959972369119143,
+      "f_out": 0.049603702312712765,
+      "delta": 3.978621521336101e-06
+     },
+     {
+      "i": 8,
+      "f_in": 0.049603702312712765,
+      "f_out": 0.04960293991570547,
+      "delta": 7.62397007296467e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-004",
+   "descripcion": "Re ≈ 3999.9 (DI manual 100 mm, 20 °C)",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0.00031540801702285474,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.00031540801702285474,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.0002,
+     "f0": 0.01372211957272518,
+     "hv_m": 8.219902954780915e-05,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.040158995999999995,
+     "Re": 3999.9,
+     "regimen": "transicion",
+     "f": 0.04010931872031168,
+     "iteraciones": 8,
+     "f_sj": 0.040784049501194644,
+     "hf_dw": 0.0016484735373166973,
+     "hf_hw": 0.0012114119998914525,
+     "dif_hw_dw": -0.2651310606639593,
+     "h_loc": 0.00014631427259510028,
+     "h_total": 0.0017947878099117977,
+     "J": 3.2969470746333945e-05,
+     "hf_100m": 0.0032969470746333947
+    },
+    "advertencias": [
+     "A-TRANSICION",
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.01372211957272518,
+      "f_out": 0.04865613262713818,
+      "delta": 0.034934013054413
+     },
+     {
+      "i": 2,
+      "f_in": 0.04865613262713818,
+      "f_out": 0.03881755102083912,
+      "delta": 0.009838581606299059
+     },
+     {
+      "i": 3,
+      "f_in": 0.03881755102083912,
+      "f_out": 0.0403348793915906,
+      "delta": 0.0015173283707514765
+     },
+     {
+      "i": 4,
+      "f_in": 0.0403348793915906,
+      "f_out": 0.040070920045965984,
+      "delta": 0.0002639593456246134
+     },
+     {
+      "i": 5,
+      "f_in": 0.040070920045965984,
+      "f_out": 0.04011592788285708,
+      "delta": 4.5007836891097774e-05
+     },
+     {
+      "i": 6,
+      "f_in": 0.04011592788285708,
+      "f_out": 0.04010822709681955,
+      "delta": 7.700786037533047e-06
+     },
+     {
+      "i": 7,
+      "f_in": 0.04010822709681955,
+      "f_out": 0.040109543916690756,
+      "delta": 1.3168198712068535e-06
+     },
+     {
+      "i": 8,
+      "f_in": 0.040109543916690756,
+      "f_out": 0.04010931872031168,
+      "delta": 2.2519637907225665e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-005",
+   "descripcion": "Re ≈ 4000.1 (DI manual 100 mm, 20 °C)",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0.0003154237878179758,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.0003154237878179758,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.0002,
+     "f0": 0.01372211957272518,
+     "hv_m": 8.220724986177451e-05,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.040161004,
+     "Re": 4000.1,
+     "regimen": "turbulento",
+     "f": 0.04010873297919435,
+     "iteraciones": 8,
+     "f_sj": 0.04078341605803097,
+     "hf_dw": 0.0016486143168299126,
+     "hf_hw": 0.0012115241818366099,
+     "dif_hw_dw": -0.26512576685235556,
+     "h_loc": 0.00014632890475395861,
+     "h_total": 0.0017949432215838713,
+     "J": 3.297228633659825e-05,
+     "hf_100m": 0.0032972286336598253
+    },
+    "advertencias": [
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.01372211957272518,
+      "f_out": 0.04865520970345186,
+      "delta": 0.03493309013072668
+     },
+     {
+      "i": 2,
+      "f_in": 0.04865520970345186,
+      "f_out": 0.03881702275413859,
+      "delta": 0.009838186949313266
+     },
+     {
+      "i": 3,
+      "f_in": 0.03881702275413859,
+      "f_out": 0.04033428165550753,
+      "delta": 0.0015172589013689383
+     },
+     {
+      "i": 4,
+      "f_in": 0.04033428165550753,
+      "f_out": 0.04007033664822378,
+      "delta": 0.00026394500728375153
+     },
+     {
+      "i": 5,
+      "f_in": 0.04007033664822378,
+      "f_out": 0.04011534168420505,
+      "delta": 4.5005035981274255e-05
+     },
+     {
+      "i": 6,
+      "f_in": 0.04011534168420505,
+      "f_out": 0.040107641439366244,
+      "delta": 7.700244838808323e-06
+     },
+     {
+      "i": 7,
+      "f_in": 0.040107641439366244,
+      "f_out": 0.0401089581561341,
+      "delta": 1.3167167678546088e-06
+     },
+     {
+      "i": 8,
+      "f_in": 0.0401089581561341,
+      "f_out": 0.04010873297919435,
+      "delta": 2.2517693974710706e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-006",
+   "descripcion": "K manual = 0 (tubería lisa, f0 = 0,02)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": 0.0,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 0.0,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.0,
+     "f0": 0.02,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.012801887146716144,
+     "iteraciones": 5,
+     "f_sj": 0.012740673950431564,
+     "hf_dw": 2.2935555548876874,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": 0.09125556222852849,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.3739906277023914,
+     "J": 0.04587111109775375,
+     "hf_100m": 4.587111109775375
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.02,
+      "f_out": 0.0122585717347499,
+      "delta": 0.007741428265250101
+     },
+     {
+      "i": 2,
+      "f_in": 0.0122585717347499,
+      "f_out": 0.012856680861824963,
+      "delta": 0.0005981091270750635
+     },
+     {
+      "i": 3,
+      "f_in": 0.012856680861824963,
+      "f_out": 0.012796572278896062,
+      "delta": 6.010858292890102e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.012796572278896062,
+      "f_out": 0.012802466543399924,
+      "delta": 5.894264503862601e-06
+     },
+     {
+      "i": 5,
+      "f_in": 0.012802466543399924,
+      "f_out": 0.012801887146716144,
+      "delta": 5.793966837801257e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-007",
+   "descripcion": "K manual = 50 mm (máximo), K/D > 0,05",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": 50.0,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 0.05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.295159386068477,
+     "f0": 0.20686826626381766,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.20688773756754403,
+     "iteraciones": 2,
+     "f_sj": 0.20738656048831464,
+     "hf_dw": 37.065513412052255,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.932474825622205,
+     "h_loc": 1.080435072814704,
+     "h_total": 38.145948484866956,
+     "J": 0.7413102682410451,
+     "hf_100m": 74.13102682410451
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-KD"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.20686826626381766,
+      "f_out": 0.20688773848393582,
+      "delta": 1.9472220118166295e-05
+     },
+     {
+      "i": 2,
+      "f_in": 0.20688773848393582,
+      "f_out": 0.20688773756754403,
+      "delta": 9.163917957799583e-10
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-008",
+   "descripcion": "K/D justo sobre 0,05",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 100,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": 5.001,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1,
+     "K_m": 0.005001,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.007853981633974483,
+     "K_sobre_D": 0.05001,
+     "f0": 0.07146765634501287,
+     "hv_m": 4.998414818312933,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 9.902974236829042,
+     "Re": 986352.0156204225,
+     "regimen": "turbulento",
+     "f": 0.07149108756993987,
+     "iteraciones": 2,
+     "f_sj": 0.07161422637008832,
+     "hf_dw": 178.67105574344748,
+     "hf_hw": 32.601983381036334,
+     "dif_hw_dw": -0.8175306949109357,
+     "h_loc": 8.897178376597022,
+     "h_total": 187.5682341200445,
+     "J": 3.5734211148689496,
+     "hf_100m": 357.34211148689496
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-KD"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.07146765634501287,
+      "f_out": 0.07149109141089778,
+      "delta": 2.3435065884910844e-05
+     },
+     {
+      "i": 2,
+      "f_in": 0.07149109141089778,
+      "f_out": 0.07149108756993987,
+      "delta": 3.8409579128373394e-09
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-009",
+   "descripcion": "T = 0 °C (mínimo)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 0,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.787e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 327135.5115830336,
+     "regimen": "turbulento",
+     "f": 0.015404489596044544,
+     "iteraciones": 5,
+     "f_sj": 0.015430478397365326,
+     "hf_dw": 2.7598315996935217,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.0931130519596669,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.8402666725082257,
+     "J": 0.05519663199387043,
+     "hf_100m": 5.519663199387043
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-HW"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.01565325085873683,
+      "delta": 0.003292509078079776
+     },
+     {
+      "i": 2,
+      "f_in": 0.01565325085873683,
+      "f_out": 0.015386959143296007,
+      "delta": 0.00026629171544082127
+     },
+     {
+      "i": 3,
+      "f_in": 0.015386959143296007,
+      "f_out": 0.015405731350310516,
+      "delta": 1.87722070145082e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.015405731350310516,
+      "f_out": 0.015404394455606754,
+      "delta": 1.3368947037618178e-06
+     },
+     {
+      "i": 5,
+      "f_in": 0.015404394455606754,
+      "f_out": 0.015404489596044544,
+      "delta": 9.514043779017267e-08
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-010",
+   "descripcion": "T = 60 °C (máximo, último tramo)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 60,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 4.74e-07,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 1233314.6818541794,
+     "regimen": "turbulento",
+     "f": 0.013478855689451409,
+     "iteraciones": 4,
+     "f_sj": 0.01355940193055359,
+     "hf_dw": 2.4148396237035077,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": 0.036447817065729415,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.4952746965182118,
+     "J": 0.048296792474070156,
+     "hf_100m": 4.829679247407015
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-HW"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.013521351746703686,
+      "delta": 0.0011606099660466333
+     },
+     {
+      "i": 2,
+      "f_in": 0.013521351746703686,
+      "f_out": 0.013477338873109493,
+      "delta": 4.4012873594193036e-05
+     },
+     {
+      "i": 3,
+      "f_in": 0.013477338873109493,
+      "f_out": 0.013478912041580854,
+      "delta": 1.5731684713613664e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.013478912041580854,
+      "f_out": 0.013478855689451409,
+      "delta": 5.635212944540835e-08
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-011",
+   "descripcion": "T = 4,99 °C (límite aviso HW)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 4.99,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.519536e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 384716.8867331087,
+     "regimen": "turbulento",
+     "f": 0.015085592829951883,
+     "iteraciones": 4,
+     "f_sj": 0.015121644286592913,
+     "hf_dw": 2.702698815993334,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.07394222332855716,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.783133888808038,
+     "J": 0.05405397631986668,
+     "hf_100m": 5.405397631986668
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-HW"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.01529195604288694,
+      "delta": 0.002931214262229887
+     },
+     {
+      "i": 2,
+      "f_in": 0.01529195604288694,
+      "f_out": 0.015072010047231537,
+      "delta": 0.00021994599565540278
+     },
+     {
+      "i": 3,
+      "f_in": 0.015072010047231537,
+      "f_out": 0.015086564347788116,
+      "delta": 1.455430055657958e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.015086564347788116,
+      "f_out": 0.015085592829951883,
+      "delta": 9.715178362328797e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-012",
+   "descripcion": "T = 25,01 °C (límite aviso HW)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 25.01,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 8.92816e-07,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 654772.2702089581,
+     "regimen": "turbulento",
+     "f": 0.014213081094633389,
+     "iteraciones": 4,
+     "f_sj": 0.014276321108330025,
+     "hf_dw": 2.546381695375867,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.017093446321728267,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.626816768190571,
+     "J": 0.05092763390751734,
+     "hf_100m": 5.092763390751734
+    },
+    "advertencias": [
+     "A-VEL-ALTA",
+     "A-HW"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014318765975576882,
+      "delta": 0.0019580241949198295
+     },
+     {
+      "i": 2,
+      "f_in": 0.014318765975576882,
+      "f_out": 0.014207623394451044,
+      "delta": 0.00011114258112583826
+     },
+     {
+      "i": 3,
+      "f_in": 0.014207623394451044,
+      "f_out": 0.014213380806203695,
+      "delta": 5.7574117526514035e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014213380806203695,
+      "f_out": 0.014213081094633389,
+      "delta": 2.9971157030662943e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-013",
+   "descripcion": "L mínima (0,001 m)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 0.001,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 5.153990719856991e-05,
+     "hf_hw": 5.0057105131026564e-05,
+     "dif_hw_dw": -0.02876997938375203,
+     "h_loc": 1.080435072814704,
+     "h_total": 1.0804866127219026,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-014",
+   "descripcion": "L máxima (100 000 m)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 100000,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 5153.990719856992,
+     "hf_hw": 5005.710513102656,
+     "dif_hw_dw": -0.028769979383752253,
+     "h_loc": 1.080435072814704,
+     "h_total": 5155.071154929807,
+     "J": 0.05153990719856992,
+     "hf_100m": 5.153990719856992
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-015",
+   "descripcion": "Q máximo (10 m³/s) en DI 5000 mm",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 5000,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 10,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 5.0,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 10.0,
+     "A_m2": 19.634954084936208,
+     "K_sobre_D": 4.000000000000001e-06,
+     "f0": 0.007020729467730179,
+     "hv_m": 0.013220297152109312,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.5092958178940651,
+     "Re": 2536333.7544525154,
+     "regimen": "turbulento",
+     "f": 0.01015145547640842,
+     "iteraciones": 5,
+     "f_sj": 0.01016270360555836,
+     "hf_dw": 0.001342052579245267,
+     "hf_hw": 0.001397641082729633,
+     "dif_hw_dw": 0.04142051089803611,
+     "h_loc": 0.023532128930754577,
+     "h_total": 0.024874181509999843,
+     "J": 2.684105158490534e-05,
+     "hf_100m": 0.002684105158490534
+    },
+    "advertencias": [
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.007020729467730179,
+      "f_out": 0.010455878481467683,
+      "delta": 0.0034351490137375044
+     },
+     {
+      "i": 2,
+      "f_in": 0.010455878481467683,
+      "f_out": 0.010127848315318107,
+      "delta": 0.0003280301661495767
+     },
+     {
+      "i": 3,
+      "f_in": 0.010127848315318107,
+      "f_out": 0.010153307118451896,
+      "delta": 2.5458803133789412e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.010153307118451896,
+      "f_out": 0.010151296976429594,
+      "delta": 2.010142022302111e-06
+     },
+     {
+      "i": 5,
+      "f_in": 0.010151296976429594,
+      "f_out": 0.01015145547640842,
+      "delta": 1.5849997882580458e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-016",
+   "descripcion": "DI mínimo (1 mm) con caudal chico",
+   "entrada": {
+    "tabla": "Manual",
+    "dn": null,
+    "pn": null,
+    "di_manual": 1,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 0.5,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.001,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 1.3888888888888888e-07,
+     "A_m2": 7.853981633974482e-07,
+     "K_sobre_D": 0.02,
+     "f0": null,
+     "hv_m": 0.001593882276247747,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.17683882565766149,
+     "Re": 176.13428850364687,
+     "regimen": "laminar",
+     "f": 0.3633591195883184,
+     "iteraciones": 0,
+     "f_sj": 0.16758315901294102,
+     "hf_dw": 28.95758303124031,
+     "hf_hw": 4.051350296328427,
+     "dif_hw_dw": -0.86009363102032,
+     "h_loc": 0.0028371104517209895,
+     "h_total": 28.960420141692033,
+     "J": 0.5791516606248063,
+     "hf_100m": 57.91516606248063
+    },
+    "advertencias": [
+     "A-LAMINAR",
+     "A-VEL-BAJA",
+     "A-HW"
+    ],
+    "iteraciones_detalle": []
+   }
+  },
+  {
+   "id": "BOR-017",
+   "descripcion": "Q muy chico (1E-9 m³/s), laminar",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 1e-09,
+    "Q_unidad": "m³/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 1e-09,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": null,
+     "hv_m": 1.0033850137352792e-16,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 4.436937453862312e-08,
+     "Re": 0.0074862271382895975,
+     "regimen": "laminar",
+     "f": 8549.032619202933,
+     "iteraciones": 0,
+     "f_sj": 0.03501407429541067,
+     "hf_dw": 2.53186871665947e-10,
+     "hf_hw": 6.089354977445239e-15,
+     "dif_hw_dw": -0.9999759491677536,
+     "h_loc": 1.786025324448797e-16,
+     "h_total": 2.531870502684795e-10,
+     "J": 5.0637374333189406e-12,
+     "hf_100m": 5.06373743331894e-10
+    },
+    "advertencias": [
+     "A-LAMINAR",
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": []
+   }
+  },
+  {
+   "id": "BOR-018",
+   "descripcion": "V justo sobre 2,5 m/s",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 202.8426240754326,
+    "Q_unidad": "m³/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.056345173354286834,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.31855252293578035,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 2.5000001000000003,
+     "Re": 421812.76587649406,
+     "regimen": "turbulento",
+     "f": 0.01491597159452772,
+     "iteraciones": 4,
+     "f_sj": 0.014957394890507113,
+     "hf_dw": 1.4024558392784061,
+     "hf_hw": 1.3777103981196281,
+     "dif_hw_dw": -0.01764436388350743,
+     "h_loc": 0.567023490825689,
+     "h_total": 1.9694793301040951,
+     "J": 0.028049116785568123,
+     "hf_100m": 2.8049116785568122
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.015100895019295294,
+      "delta": 0.0027401532386382415
+     },
+     {
+      "i": 2,
+      "f_in": 0.015100895019295294,
+      "f_out": 0.014904251012511019,
+      "delta": 0.00019664400678427556
+     },
+     {
+      "i": 3,
+      "f_in": 0.014904251012511019,
+      "f_out": 0.014916775678317706,
+      "delta": 1.252466580668743e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.014916775678317706,
+      "f_out": 0.01491597159452772,
+      "delta": 8.040837899854492e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-019",
+   "descripcion": "V justo bajo 0,6 m/s",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 48.68221971711007,
+    "Q_unidad": "m³/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.013522838810308354,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.01834861773700357,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 0.5999999,
+     "Re": 101235.04288844622,
+     "regimen": "turbulento",
+     "f": 0.01856160639654919,
+     "iteraciones": 5,
+     "f_sj": 0.01851247690877985,
+     "hf_dw": 0.1005253306832944,
+     "hf_hw": 0.09801871159406657,
+     "dif_hw_dw": -0.024935198642866974,
+     "h_loc": 0.032660539571866355,
+     "h_total": 0.13318587025516077,
+     "J": 0.002010506613665888,
+     "hf_100m": 0.2010506613665888
+    },
+    "advertencias": [
+     "A-VEL-BAJA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.019357305637322585,
+      "delta": 0.006996563856665533
+     },
+     {
+      "i": 2,
+      "f_in": 0.019357305637322585,
+      "f_out": 0.018483413608039383,
+      "delta": 0.000873892029283202
+     },
+     {
+      "i": 3,
+      "f_in": 0.018483413608039383,
+      "f_out": 0.018569414564350333,
+      "delta": 8.600095631094984e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.018569414564350333,
+      "f_out": 0.01856073206601235,
+      "delta": 8.6824983379849e-06
+     },
+     {
+      "i": 5,
+      "f_in": 0.01856073206601235,
+      "f_out": 0.01856160639654919,
+      "delta": 8.743305368423548e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-020",
+   "descripcion": "D < 50 mm (aviso HW)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 50,
+    "pn": 10,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 2,
+    "Q_unidad": "l/s",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.045200000000000004,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.002,
+     "A_m2": 0.001604599863747523,
+     "K_sobre_D": 0.0004424778761061947,
+     "f0": 0.016240395541026846,
+     "hv_m": 0.0791821858288571,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 1.2464166582496305,
+     "Re": 56113.57863832998,
+     "regimen": "turbulento",
+     "f": 0.021941809882603136,
+     "iteraciones": 5,
+     "f_sj": 0.021990756424419645,
+     "hf_dw": 1.9219031720638655,
+     "hf_hw": 1.7715889122059754,
+     "dif_hw_dw": -0.0782111513435263,
+     "h_loc": 0.14094429077536563,
+     "h_total": 2.062847462839231,
+     "J": 0.03843806344127731,
+     "hf_100m": 3.8438063441277306
+    },
+    "advertencias": [
+     "A-HW"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.016240395541026846,
+      "f_out": 0.02257684141121943,
+      "delta": 0.006336445870192584
+     },
+     {
+      "i": 2,
+      "f_in": 0.02257684141121943,
+      "f_out": 0.021884251039093132,
+      "delta": 0.0006925903721262984
+     },
+     {
+      "i": 3,
+      "f_in": 0.021884251039093132,
+      "f_out": 0.02194707830104008,
+      "delta": 6.282726194694818e-05
+     },
+     {
+      "i": 4,
+      "f_in": 0.02194707830104008,
+      "f_out": 0.021941274666958246,
+      "delta": 5.803634081834319e-06
+     },
+     {
+      "i": 5,
+      "f_in": 0.021941274666958246,
+      "f_out": 0.021941809882603136,
+      "delta": 5.352156448902579e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-021",
+   "descripcion": "C manual = 50 (mínimo)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": 50,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 50,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 19.145393557772927,
+     "dif_hw_dw": 6.429347314891619,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.6574304327431992,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-022",
+   "descripcion": "C manual = 160 (máximo)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": 160,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 160,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.2208873908979014,
+     "dif_hw_dw": -0.1381872759912438,
+     "h_loc": 1.080435072814704,
+     "h_total": 3.6574304327431992,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-023",
+   "descripcion": "Sin singularidades",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {},
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 0
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 0.0,
+     "h_total": 2.576995359928495,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-024",
+   "descripcion": "Todas las singularidades con 999",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 999,
+     "Entrada con bordes vivos": 999,
+     "Entrada redondeada": 999,
+     "Salida de tubería (a depósito)": 999,
+     "Codo 90° radio estándar": 999,
+     "Codo 45°": 999,
+     "Tee paso directo": 999,
+     "Tee salida lateral": 999,
+     "Válvula esclusa abierta": 999,
+     "Válvula de retención": 999
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 8621.369999999999
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 5233.050856018261,
+     "h_total": 5235.627851378189,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-025",
+   "descripcion": "Una singularidad propia (filtro K = 3,5)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "Filtro de malla",
+      "k": 3.5,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 5.28
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 3.2048860586863137,
+     "h_total": 5.781881418614809,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-026",
+   "descripcion": "Singularidades propias con K = 0 y K = 100 (límites)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "A",
+      "k": 0.0,
+      "cantidad": 2
+     },
+     {
+      "nombre": "B",
+      "k": 100.0,
+      "cantidad": 1
+     }
+    ]
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 101.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 61.7790346691464,
+     "h_total": 64.35603002907489,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-027",
+   "descripcion": "Singularidad propia sin nombre",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "",
+      "k": 1.2,
+      "cantidad": 3
+     }
+    ]
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 5.38
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 3.265584658282645,
+     "h_total": 5.84258001821114,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-028",
+   "descripcion": "10 singularidades propias (máximo en la app)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Cloruro de polivinilo (PVC)",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": [
+     {
+      "nombre": "S0",
+      "k": 0.0,
+      "cantidad": 0
+     },
+     {
+      "nombre": "S1",
+      "k": 0.1,
+      "cantidad": 1
+     },
+     {
+      "nombre": "S2",
+      "k": 0.2,
+      "cantidad": 2
+     },
+     {
+      "nombre": "S3",
+      "k": 0.30000000000000004,
+      "cantidad": 3
+     },
+     {
+      "nombre": "S4",
+      "k": 0.4,
+      "cantidad": 4
+     },
+     {
+      "nombre": "S5",
+      "k": 0.5,
+      "cantidad": 5
+     },
+     {
+      "nombre": "S6",
+      "k": 0.6000000000000001,
+      "cantidad": 6
+     },
+     {
+      "nombre": "S7",
+      "k": 0.7000000000000001,
+      "cantidad": 7
+     },
+     {
+      "nombre": "S8",
+      "k": 0.8,
+      "cantidad": 8
+     },
+     {
+      "nombre": "S9",
+      "k": 0.9,
+      "cantidad": 9
+     }
+    ]
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 2e-05,
+     "C": 150.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.00011806375442739081,
+     "f0": 0.012360741780657053,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 30.28
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.014383956693401853,
+     "iteraciones": 4,
+     "f_sj": 0.014442076171676133,
+     "hf_dw": 2.576995359928495,
+     "hf_hw": 2.502855256551328,
+     "dif_hw_dw": -0.02876997938375192,
+     "h_loc": 18.37953595776924,
+     "h_total": 20.956531317697735,
+     "J": 0.051539907198569906,
+     "hf_100m": 5.15399071985699
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.012360741780657053,
+      "f_out": 0.014507383107665254,
+      "delta": 0.0021466413270082012
+     },
+     {
+      "i": 2,
+      "f_in": 0.014507383107665254,
+      "f_out": 0.014377197149314585,
+      "delta": 0.00013018595835066933
+     },
+     {
+      "i": 3,
+      "f_in": 0.014377197149314585,
+      "f_out": 0.014384352144686165,
+      "delta": 7.154995371580833e-06
+     },
+     {
+      "i": 4,
+      "f_in": 0.014384352144686165,
+      "f_out": 0.014383956693401853,
+      "delta": 3.954512843122593e-07
+     }
+    ]
+   }
+  },
+  {
+   "id": "BOR-029",
+   "descripcion": "Material con rango de K usa el máximo (fundición nueva, K = 1,00 mm)",
+   "entrada": {
+    "tabla": "PVC",
+    "dn": 180,
+    "pn": 6,
+    "di_manual": null,
+    "material": "Fundición - nueva",
+    "k_manual": null,
+    "c_manual": null,
+    "L": 50,
+    "T": 20,
+    "Q_valor": 280000,
+    "Q_unidad": "l/h",
+    "cantidades": {
+     "Entrada de tubería proyectada (reentrante)": 1,
+     "Salida de tubería (a depósito)": 1
+    },
+    "singularidades_extra": []
+   },
+   "esperado": {
+    "ok": true,
+    "intermedios": {
+     "D_m": 0.1694,
+     "K_m": 0.001,
+     "C": 130.0,
+     "nu_m2s": 1.004e-06,
+     "Q_m3s": 0.07777777777777778,
+     "A_m2": 0.022538068440191995,
+     "K_sobre_D": 0.0059031877213695395,
+     "f0": 0.03192680068050786,
+     "hv_m": 0.6069859959633169,
+     "suma_K": 1.78
+    },
+    "resultados": {
+     "V": 3.4509513530040206,
+     "Re": 582262.1107558575,
+     "regimen": "turbulento",
+     "f": 0.03207610847305695,
+     "iteraciones": 2,
+     "f_sj": 0.03218337420367844,
+     "hf_dw": 5.7466790578942915,
+     "hf_hw": 3.2623733279536915,
+     "dif_hw_dw": -0.43230284916083406,
+     "h_loc": 1.080435072814704,
+     "h_total": 6.8271141307089955,
+     "J": 0.11493358115788582,
+     "hf_100m": 11.493358115788583
+    },
+    "advertencias": [
+     "A-VEL-ALTA"
+    ],
+    "iteraciones_detalle": [
+     {
+      "i": 1,
+      "f_in": 0.03192680068050786,
+      "f_out": 0.03207645660368175,
+      "delta": 0.00014965592317389004
+     },
+     {
+      "i": 2,
+      "f_in": 0.03207645660368175,
+      "f_out": 0.03207610847305695,
+      "delta": 3.4813062479988055e-07
+     }
+    ]
+   }
+  }
+ ]
+}

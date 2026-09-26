@@ -1,0 +1,667 @@
+{
+  "version_tablas": "1.0.0",
+  "fuente": "Darcy Weisbach - corregido.xlsx",
+  "constantes": {
+    "g": 9.81,
+    "tolerancia": 1e-06,
+    "re_laminar": 2000.0,
+    "re_turbulento": 4000.0,
+    "v_min": 0.6,
+    "v_max": 2.5,
+    "max_iter": 30,
+    "f0_liso": 0.02,
+    "colebrook_a": 2.51,
+    "colebrook_b": 3.71
+  },
+  "materiales": [
+    {
+      "material": "Polietileno (PE)",
+      "k_min_mm": 0.002,
+      "k_max_mm": 0.002,
+      "c_hw": 150.0,
+      "grupo": "Plástico"
+    },
+    {
+      "material": "Cloruro de polivinilo (PVC)",
+      "k_min_mm": 0.02,
+      "k_max_mm": 0.02,
+      "c_hw": 150.0,
+      "grupo": "Plástico"
+    },
+    {
+      "material": "PVC orientado",
+      "k_min_mm": 0.007,
+      "k_max_mm": 0.007,
+      "c_hw": 150.0,
+      "grupo": "Plástico"
+    },
+    {
+      "material": "Tubería estirada (latón, cobre, plomo)",
+      "k_min_mm": 0.0015,
+      "k_max_mm": 0.01,
+      "c_hw": 140.0,
+      "grupo": "Metálica"
+    },
+    {
+      "material": "Aluminio",
+      "k_min_mm": 0.015,
+      "k_max_mm": 0.06,
+      "c_hw": 135.0,
+      "grupo": "Metálica"
+    },
+    {
+      "material": "Acero estirado sin soldadura - nuevo",
+      "k_min_mm": 0.02,
+      "k_max_mm": 0.1,
+      "c_hw": 130.0,
+      "grupo": "Acero"
+    },
+    {
+      "material": "Acero estirado sin soldadura - muchos años",
+      "k_min_mm": 1.2,
+      "k_max_mm": 1.5,
+      "c_hw": 100.0,
+      "grupo": "Acero"
+    },
+    {
+      "material": "Acero galvanizado - nuevo, buena galv.",
+      "k_min_mm": 0.07,
+      "k_max_mm": 0.1,
+      "c_hw": 125.0,
+      "grupo": "Acero galv."
+    },
+    {
+      "material": "Acero galvanizado - galv. ordinaria",
+      "k_min_mm": 0.1,
+      "k_max_mm": 0.15,
+      "c_hw": 120.0,
+      "grupo": "Acero galv."
+    },
+    {
+      "material": "Fundición - nueva",
+      "k_min_mm": 0.25,
+      "k_max_mm": 1.0,
+      "c_hw": 130.0,
+      "grupo": "Fundición"
+    },
+    {
+      "material": "Fundición - nueva con revest. bituminoso",
+      "k_min_mm": 0.1,
+      "k_max_mm": 0.15,
+      "c_hw": 130.0,
+      "grupo": "Fundición"
+    },
+    {
+      "material": "Fundición - asfaltada",
+      "k_min_mm": 0.12,
+      "k_max_mm": 0.3,
+      "c_hw": 125.0,
+      "grupo": "Fundición"
+    },
+    {
+      "material": "Fundición - varios años en servicio",
+      "k_min_mm": 1.0,
+      "k_max_mm": 4.0,
+      "c_hw": 100.0,
+      "grupo": "Fundición"
+    },
+    {
+      "material": "Hormigón - superficie muy lisa",
+      "k_min_mm": 0.3,
+      "k_max_mm": 0.8,
+      "c_hw": 130.0,
+      "grupo": "Hormigón"
+    },
+    {
+      "material": "Hormigón - condiciones medias",
+      "k_min_mm": 2.5,
+      "k_max_mm": 2.5,
+      "c_hw": 120.0,
+      "grupo": "Hormigón"
+    },
+    {
+      "material": "Hormigón - superficie rugosa",
+      "k_min_mm": 3.0,
+      "k_max_mm": 9.0,
+      "c_hw": 110.0,
+      "grupo": "Hormigón"
+    },
+    {
+      "material": "Hormigón armado",
+      "k_min_mm": 2.5,
+      "k_max_mm": 2.5,
+      "c_hw": 120.0,
+      "grupo": "Hormigón"
+    },
+    {
+      "material": "Fibrocemento - nuevo",
+      "k_min_mm": 0.05,
+      "k_max_mm": 0.1,
+      "c_hw": 140.0,
+      "grupo": "Fibrocemento"
+    },
+    {
+      "material": "Fibrocemento - varios años en uso",
+      "k_min_mm": 0.6,
+      "k_max_mm": 0.6,
+      "c_hw": 130.0,
+      "grupo": "Fibrocemento"
+    }
+  ],
+  "viscosidad": [
+    {
+      "t_c": 0.0,
+      "nu_m2s": 1.787e-06
+    },
+    {
+      "t_c": 5.0,
+      "nu_m2s": 1.519e-06
+    },
+    {
+      "t_c": 10.0,
+      "nu_m2s": 1.307e-06
+    },
+    {
+      "t_c": 15.0,
+      "nu_m2s": 1.139e-06
+    },
+    {
+      "t_c": 20.0,
+      "nu_m2s": 1.004e-06
+    },
+    {
+      "t_c": 25.0,
+      "nu_m2s": 8.93e-07
+    },
+    {
+      "t_c": 30.0,
+      "nu_m2s": 8.01e-07
+    },
+    {
+      "t_c": 35.0,
+      "nu_m2s": 7.24e-07
+    },
+    {
+      "t_c": 40.0,
+      "nu_m2s": 6.58e-07
+    },
+    {
+      "t_c": 50.0,
+      "nu_m2s": 5.53e-07
+    },
+    {
+      "t_c": 60.0,
+      "nu_m2s": 4.74e-07
+    }
+  ],
+  "diametros": {
+    "PVC": [
+      {
+        "dn": 25.0,
+        "pn": 10.0,
+        "di_mm": 22.0
+      },
+      {
+        "dn": 25.0,
+        "pn": 16.0,
+        "di_mm": 21.2
+      },
+      {
+        "dn": 32.0,
+        "pn": 10.0,
+        "di_mm": 28.4
+      },
+      {
+        "dn": 32.0,
+        "pn": 16.0,
+        "di_mm": 27.2
+      },
+      {
+        "dn": 40.0,
+        "pn": 6.0,
+        "di_mm": 36.4
+      },
+      {
+        "dn": 40.0,
+        "pn": 10.0,
+        "di_mm": 36.0
+      },
+      {
+        "dn": 40.0,
+        "pn": 16.0,
+        "di_mm": 35.2
+      },
+      {
+        "dn": 50.0,
+        "pn": 4.0,
+        "di_mm": 47.2
+      },
+      {
+        "dn": 50.0,
+        "pn": 6.0,
+        "di_mm": 46.4
+      },
+      {
+        "dn": 50.0,
+        "pn": 10.0,
+        "di_mm": 45.2
+      },
+      {
+        "dn": 50.0,
+        "pn": 16.0,
+        "di_mm": 42.6
+      },
+      {
+        "dn": 63.0,
+        "pn": 4.0,
+        "di_mm": 59.4
+      },
+      {
+        "dn": 63.0,
+        "pn": 6.0,
+        "di_mm": 59.2
+      },
+      {
+        "dn": 63.0,
+        "pn": 10.0,
+        "di_mm": 57.0
+      },
+      {
+        "dn": 63.0,
+        "pn": 16.0,
+        "di_mm": 53.6
+      },
+      {
+        "dn": 75.0,
+        "pn": 4.0,
+        "di_mm": 71.4
+      },
+      {
+        "dn": 75.0,
+        "pn": 6.0,
+        "di_mm": 70.6
+      },
+      {
+        "dn": 75.0,
+        "pn": 10.0,
+        "di_mm": 67.8
+      },
+      {
+        "dn": 75.0,
+        "pn": 16.0,
+        "di_mm": 63.8
+      },
+      {
+        "dn": 90.0,
+        "pn": 4.0,
+        "di_mm": 86.4
+      },
+      {
+        "dn": 90.0,
+        "pn": 6.0,
+        "di_mm": 84.6
+      },
+      {
+        "dn": 90.0,
+        "pn": 10.0,
+        "di_mm": 81.4
+      },
+      {
+        "dn": 90.0,
+        "pn": 16.0,
+        "di_mm": 76.6
+      },
+      {
+        "dn": 110.0,
+        "pn": 4.0,
+        "di_mm": 105.6
+      },
+      {
+        "dn": 110.0,
+        "pn": 6.0,
+        "di_mm": 103.6
+      },
+      {
+        "dn": 110.0,
+        "pn": 10.0,
+        "di_mm": 99.4
+      },
+      {
+        "dn": 110.0,
+        "pn": 16.0,
+        "di_mm": 93.6
+      },
+      {
+        "dn": 125.0,
+        "pn": 4.0,
+        "di_mm": 120.0
+      },
+      {
+        "dn": 125.0,
+        "pn": 6.0,
+        "di_mm": 117.6
+      },
+      {
+        "dn": 125.0,
+        "pn": 10.0,
+        "di_mm": 113.0
+      },
+      {
+        "dn": 125.0,
+        "pn": 16.0,
+        "di_mm": 106.4
+      },
+      {
+        "dn": 140.0,
+        "pn": 4.0,
+        "di_mm": 134.4
+      },
+      {
+        "dn": 140.0,
+        "pn": 6.0,
+        "di_mm": 131.8
+      },
+      {
+        "dn": 140.0,
+        "pn": 10.0,
+        "di_mm": 126.6
+      },
+      {
+        "dn": 140.0,
+        "pn": 16.0,
+        "di_mm": 119.2
+      },
+      {
+        "dn": 160.0,
+        "pn": 4.0,
+        "di_mm": 153.6
+      },
+      {
+        "dn": 160.0,
+        "pn": 6.0,
+        "di_mm": 150.6
+      },
+      {
+        "dn": 160.0,
+        "pn": 10.0,
+        "di_mm": 144.5
+      },
+      {
+        "dn": 160.0,
+        "pn": 16.0,
+        "di_mm": 136.2
+      },
+      {
+        "dn": 180.0,
+        "pn": 4.0,
+        "di_mm": 172.8
+      },
+      {
+        "dn": 180.0,
+        "pn": 6.0,
+        "di_mm": 169.4
+      },
+      {
+        "dn": 180.0,
+        "pn": 10.0,
+        "di_mm": 162.8
+      },
+      {
+        "dn": 200.0,
+        "pn": 4.0,
+        "di_mm": 192.0
+      },
+      {
+        "dn": 200.0,
+        "pn": 6.0,
+        "di_mm": 188.2
+      },
+      {
+        "dn": 200.0,
+        "pn": 10.0,
+        "di_mm": 180.8
+      },
+      {
+        "dn": 250.0,
+        "pn": 4.0,
+        "di_mm": 240.2
+      },
+      {
+        "dn": 250.0,
+        "pn": 6.0,
+        "di_mm": 235.4
+      },
+      {
+        "dn": 250.0,
+        "pn": 10.0,
+        "di_mm": 226.2
+      },
+      {
+        "dn": 315.0,
+        "pn": 4.0,
+        "di_mm": 302.6
+      },
+      {
+        "dn": 315.0,
+        "pn": 6.0,
+        "di_mm": 296.6
+      },
+      {
+        "dn": 315.0,
+        "pn": 10.0,
+        "di_mm": 285.0
+      },
+      {
+        "dn": 355.0,
+        "pn": 4.0,
+        "di_mm": 341.0
+      },
+      {
+        "dn": 355.0,
+        "pn": 6.0,
+        "di_mm": 334.2
+      },
+      {
+        "dn": 400.0,
+        "pn": 4.0,
+        "di_mm": 384.2
+      },
+      {
+        "dn": 400.0,
+        "pn": 6.0,
+        "di_mm": 376.6
+      },
+      {
+        "dn": 500.0,
+        "pn": 4.0,
+        "di_mm": 480.4
+      }
+    ],
+    "PE": [
+      {
+        "dn": 10.0,
+        "pn": 2.5,
+        "di_mm": 8.0
+      },
+      {
+        "dn": 12.0,
+        "pn": 2.5,
+        "di_mm": 10.0
+      },
+      {
+        "dn": 16.0,
+        "pn": 2.5,
+        "di_mm": 13.6
+      },
+      {
+        "dn": 20.0,
+        "pn": 2.5,
+        "di_mm": 17.6
+      },
+      {
+        "dn": 25.0,
+        "pn": 4.0,
+        "di_mm": 21.0
+      },
+      {
+        "dn": 25.0,
+        "pn": 6.0,
+        "di_mm": 20.4
+      },
+      {
+        "dn": 25.0,
+        "pn": 10.0,
+        "di_mm": 18.0
+      },
+      {
+        "dn": 32.0,
+        "pn": 4.0,
+        "di_mm": 28.0
+      },
+      {
+        "dn": 32.0,
+        "pn": 6.0,
+        "di_mm": 26.2
+      },
+      {
+        "dn": 32.0,
+        "pn": 10.0,
+        "di_mm": 23.2
+      },
+      {
+        "dn": 40.0,
+        "pn": 4.0,
+        "di_mm": 35.2
+      },
+      {
+        "dn": 40.0,
+        "pn": 6.0,
+        "di_mm": 32.6
+      },
+      {
+        "dn": 40.0,
+        "pn": 10.0,
+        "di_mm": 29.0
+      },
+      {
+        "dn": 50.0,
+        "pn": 4.0,
+        "di_mm": 44.0
+      },
+      {
+        "dn": 50.0,
+        "pn": 6.0,
+        "di_mm": 40.8
+      },
+      {
+        "dn": 50.0,
+        "pn": 10.0,
+        "di_mm": 36.2
+      },
+      {
+        "dn": 63.0,
+        "pn": 4.0,
+        "di_mm": 59.2
+      },
+      {
+        "dn": 63.0,
+        "pn": 6.0,
+        "di_mm": 51.4
+      },
+      {
+        "dn": 63.0,
+        "pn": 10.0,
+        "di_mm": 45.8
+      }
+    ]
+  },
+  "singularidades": [
+    {
+      "singularidad": "Entrada de tubería proyectada (reentrante)",
+      "k": 0.78,
+      "nota": "Valor del archivo original"
+    },
+    {
+      "singularidad": "Entrada con bordes vivos",
+      "k": 0.5,
+      "nota": "Típico"
+    },
+    {
+      "singularidad": "Entrada redondeada",
+      "k": 0.1,
+      "nota": "Típico (0,04–0,2)"
+    },
+    {
+      "singularidad": "Salida de tubería (a depósito)",
+      "k": 1.0,
+      "nota": "Valor del archivo original"
+    },
+    {
+      "singularidad": "Codo 90° radio estándar",
+      "k": 0.75,
+      "nota": "Típico (0,3–0,9)"
+    },
+    {
+      "singularidad": "Codo 45°",
+      "k": 0.4,
+      "nota": "Típico"
+    },
+    {
+      "singularidad": "Tee paso directo",
+      "k": 0.6,
+      "nota": "Típico"
+    },
+    {
+      "singularidad": "Tee salida lateral",
+      "k": 1.8,
+      "nota": "Típico"
+    },
+    {
+      "singularidad": "Válvula esclusa abierta",
+      "k": 0.2,
+      "nota": "Típico"
+    },
+    {
+      "singularidad": "Válvula de retención",
+      "k": 2.5,
+      "nota": "Típico (2–3,5)"
+    }
+  ],
+  "caudal": [
+    {
+      "unidad": "l/h",
+      "num": 1.0,
+      "den": 3600000.0
+    },
+    {
+      "unidad": "l/min",
+      "num": 1.0,
+      "den": 60000.0
+    },
+    {
+      "unidad": "l/s",
+      "num": 1.0,
+      "den": 1000.0
+    },
+    {
+      "unidad": "m³/h",
+      "num": 1.0,
+      "den": 3600.0
+    },
+    {
+      "unidad": "m³/día",
+      "num": 1.0,
+      "den": 86400.0
+    },
+    {
+      "unidad": "m³/s",
+      "num": 1.0,
+      "den": 1.0
+    },
+    {
+      "unidad": "gpm (US)",
+      "num": 0.003785411784,
+      "den": 60.0
+    }
+  ]
+}

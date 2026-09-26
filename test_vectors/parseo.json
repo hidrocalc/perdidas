@@ -1,0 +1,180 @@
+{
+ "meta": {
+  "version_especificacion": "1.0",
+  "version_tablas": "1.0.0",
+  "tolerancia_relativa": 1e-09,
+  "semilla": 20260925
+ },
+ "casos": [
+  {
+   "texto": "0,02",
+   "valor": 0.02,
+   "error": null
+  },
+  {
+   "texto": "0.02",
+   "valor": 0.02,
+   "error": null
+  },
+  {
+   "texto": "5",
+   "valor": 5.0,
+   "error": null
+  },
+  {
+   "texto": " 5 ",
+   "valor": 5.0,
+   "error": null
+  },
+  {
+   "texto": "+5",
+   "valor": 5.0,
+   "error": null
+  },
+  {
+   "texto": "-5",
+   "valor": -5.0,
+   "error": null
+  },
+  {
+   "texto": "5.",
+   "valor": 5.0,
+   "error": null
+  },
+  {
+   "texto": ".5",
+   "valor": 0.5,
+   "error": null
+  },
+  {
+   "texto": ",5",
+   "valor": 0.5,
+   "error": null
+  },
+  {
+   "texto": "1e-3",
+   "valor": 0.001,
+   "error": null
+  },
+  {
+   "texto": "1E3",
+   "valor": 1000.0,
+   "error": null
+  },
+  {
+   "texto": "1,5e3",
+   "valor": 1500.0,
+   "error": null
+  },
+  {
+   "texto": "2.5E-2",
+   "valor": 0.025,
+   "error": null
+  },
+  {
+   "texto": "1.000",
+   "valor": 1.0,
+   "error": null
+  },
+  {
+   "texto": "280.000",
+   "valor": 280.0,
+   "error": null
+  },
+  {
+   "texto": "1.000,5",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "1,000.5",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "1..5",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "1,,5",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "",
+   "valor": null,
+   "error": "E-VACIO"
+  },
+  {
+   "texto": "   ",
+   "valor": null,
+   "error": "E-VACIO"
+  },
+  {
+   "texto": "abc",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "5a",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "NaN",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "nan",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "Infinity",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "inf",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "--1",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "1e",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "e5",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "1 000",
+   "valor": null,
+   "error": "E-FORMATO"
+  },
+  {
+   "texto": "0",
+   "valor": 0.0,
+   "error": null
+  },
+  {
+   "texto": "0,0",
+   "valor": 0.0,
+   "error": null
+  },
+  {
+   "texto": "1e400",
+   "valor": null,
+   "error": "E-FORMATO"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@dw/data",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./index.ts", "./tablas.json": "./tablas.json" }
+}
