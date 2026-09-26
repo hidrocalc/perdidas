@@ -31,7 +31,10 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
+      - name: Typecheck (motor + interfaz con svelte-check)
+        run: pnpm typecheck
       - run: pnpm lint
       - name: Pruebas + cobertura (umbral 95 %)
         run: pnpm coverage
+      - name: Build de la interfaz
+        run: pnpm build
