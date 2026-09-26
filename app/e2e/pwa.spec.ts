@@ -1,5 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { fileURLToPath } from "node:url";
+import { preview } from "vite";
 
 test("carga la app", async ({ page }) => {
   await page.goto("./");
@@ -24,17 +26,28 @@ test("el service worker precachea la app completa", async ({ page }) => {
   expect(urls.some((u) => u.endsWith(".css"))).toBe(true);
 });
 
-test("funciona sin conexión después de la primera carga", async ({ page, context, browserName }) => {
-  // El WebKit de Playwright para Windows (WinCairo, no Safari) falla al recargar con la
-  // red emulada como cortada. En la CI (Linux) sí corre; Safari real se prueba en la etapa 5.
-  test.skip(browserName === "webkit" && process.platform === "win32", "Emulación offline no soportada en WebKit/Windows");
+test("funciona sin conexión: con el servidor apagado, la app recarga desde la caché", async ({ page }) => {
+  // Servidor propio (puerto libre) sobre el build ya generado: se apaga de verdad a mitad del test.
+  // No se usa context.setOffline porque el WebKit de Playwright falla al recargar con la red
+  // emulada como cortada, aunque haya service worker (probado en Windows y en Linux).
+  const servidor = await preview({
+    root: fileURLToPath(new URL("..", import.meta.url)),
+    preview: { port: 0, strictPort: false },
+    logLevel: "silent",
+  });
+  const url = servidor.resolvedUrls?.local[0];
+  if (url === undefined) throw new Error("vite preview no informó la URL");
 
-  await page.goto("./");
-  await expect(page.getByText("Lista para usar sin conexión")).toBeVisible();
+  try {
+    await page.goto(url);
+    await expect(page.getByText("Lista para usar sin conexión")).toBeVisible();
+  } finally {
+    await servidor.close();
+  }
 
-  await context.setOffline(true);
+  // Sin servidor: sin el service worker esto sería "no se puede conectar".
   await page.reload();
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Pérdidas de carga en tuberías" })).toBeVisible();
   await expect(page.getByText("Lista para usar sin conexión")).toBeVisible();
 });
 
