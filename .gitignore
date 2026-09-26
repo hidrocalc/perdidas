@@ -4,3 +4,5 @@ __pycache__/
 node_modules/
 coverage/
 app/dist/
+app/test-results/
+app/playwright-report/

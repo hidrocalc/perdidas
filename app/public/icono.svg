@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0b4f8a"/>
+  <!-- Línea de energía que baja: la pérdida de carga -->
+  <path d="M120 150 L392 230" stroke="#9fd3ff" stroke-width="22" stroke-linecap="round"/>
+  <!-- Caño -->
+  <rect x="104" y="290" width="304" height="72" rx="14" fill="#ffffff"/>
+  <rect x="84" y="276" width="36" height="100" rx="8" fill="#ffffff"/>
+  <rect x="392" y="276" width="36" height="100" rx="8" fill="#ffffff"/>
+  <!-- Flecha de caudal -->
+  <path d="M180 326 H316 M290 304 L318 326 L290 348" stroke="#0b4f8a" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

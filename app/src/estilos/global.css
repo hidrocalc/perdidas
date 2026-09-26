@@ -1,0 +1,59 @@
+/* Tokens de color: tema claro por defecto, oscuro según la preferencia del sistema.
+   Todos los pares texto/fondo cumplen contraste AA (≥ 4,5:1). */
+:root {
+  --fondo: #ffffff;
+  --superficie: #f2f5f8;
+  --texto: #1a1d21;
+  --texto-suave: #4a5260;
+  --primario: #0b4f8a;
+  --sobre-primario: #ffffff;
+  --exito: #1d6b35;
+  --borde: #8a94a3;
+  --foco: #c2410c;
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #121417;
+    --superficie: #1d2126;
+    --texto: #e8eaed;
+    --texto-suave: #b4bcc8;
+    --primario: #7cc0ff;
+    --sobre-primario: #0b1a29;
+    --exito: #7ddc97;
+    --borde: #6b7482;
+    --foco: #fb923c;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--primario);
+  background: var(--primario);
+  color: var(--sobre-primario);
+  cursor: pointer;
+}
+
+button.secundario {
+  background: transparent;
+  color: var(--primario);
+}
