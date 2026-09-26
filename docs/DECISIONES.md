@@ -6,6 +6,10 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-14 | 2026-09-25 | Regla `no-useless-default-assignment` apagada en `.svelte` | Vigente |
+| D-13 | 2026-09-25 | Campos numéricos con `type="text"` e `inputmode`, no `type="number"` | Vigente |
+| D-12 | 2026-09-25 | Cantidad de singularidad vacía = 0; se envían las 10 filas | Vigente |
+| D-11 | 2026-09-25 | Cálculo en vivo, sin botón "Calcular" | Vigente |
 | D-10 | 2026-09-25 | `tablas.json` no se toca si el Excel no cambió | Vigente |
 | D-09 | 2026-09-25 | Especificación 1.1: el motor devuelve lo que la interfaz necesita mostrar | Vigente |
 | D-08 | 2026-09-25 | Test offline apagando el servidor, no emulando la red | Vigente |
@@ -18,6 +22,42 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-14 · Regla `no-useless-default-assignment` apagada en `.svelte`
+
+**Contexto.** En Svelte 5 una prop enlazable se declara `let { valor = $bindable() } = $props()`. La regla de typescript-eslint lo toma como un valor por defecto inútil.
+
+**Decisión.** Se apaga solo para `**/*.svelte` y `**/*.svelte.ts`. El resto del lint `strictTypeChecked` sigue igual.
+
+## D-13 · Campos numéricos con `type="text"` e `inputmode`, no `type="number"`
+
+**Decisión.** `<input type="text" inputmode="decimal">` (o `numeric` para cantidades enteras). El texto lo interpreta `parseNumero()` del motor.
+
+**Por qué.**
+
+| Problema de `type="number"` | Consecuencia |
+| --- | --- |
+| Según el navegador y el idioma, rechaza la coma o el punto | "0,02" podría llegar vacío, en contra de la especificación |
+| Si el texto no es un número, el navegador entrega `""` | No se puede mostrar "no es un número válido" ni el valor interpretado |
+| La rueda del mouse cambia el valor sin querer | Resultados alterados sin que el usuario lo note |
+
+`inputmode` sigue mostrando el teclado numérico en el celular.
+
+## D-12 · Cantidad de singularidad vacía = 0; se envían las 10 filas
+
+**Decisión.** En las singularidades de tabla, un campo vacío cuenta como 0 (el valor por defecto de la especificación). El formulario manda al motor las 10 cantidades, en el orden de la tabla, incluidos los ceros.
+
+**Verificación.** Sumar `0·K` no cambia la suma en IEEE 754. Un test confirma que los valores por defecto del formulario dan **exactamente** (`toEqual`, sin tolerancia) los mismos resultados que `ENTRADA_POR_DEFECTO` del motor, que solo trae las 2 filas con cantidad 1.
+
+**Por qué.** Así el índice `fila` de un error del motor coincide con la fila en pantalla.
+
+## D-11 · Cálculo en vivo, sin botón "Calcular"
+
+**Decisión.** Cada cambio en un campo vuelve a leer el formulario y llama a `calcular()` (tarda menos de 1 ms). Si hay errores, el panel de resultados muestra "Corregí N datos para ver el resultado" con un enlace a cada campo; nunca quedan a la vista resultados viejos junto a datos nuevos.
+
+**Por qué.** Para enseñar, ver cómo cambia la pérdida al tocar L, Q o el material vale más que un botón. El riesgo de un resultado desactualizado desaparece.
+
+**Accesibilidad.** Los resultados no son una región `aria-live`: un lector de pantalla no anuncia cada tecla. Cada error está vinculado a su campo con `aria-describedby` y `aria-invalid`.
 
 ## D-10 · `tablas.json` no se toca si el Excel no cambió
 

@@ -21,6 +21,10 @@ export default tseslint.config(
     // Componentes Svelte: el script se analiza con el parser de TypeScript y con tipos.
     files: ["**/*.svelte", "**/*.svelte.ts"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
+    rules: {
+      // `valor = $bindable()` es la sintaxis de Svelte para props enlazables, no un valor por defecto.
+      "@typescript-eslint/no-useless-default-assignment": "off",
+    },
   },
   {
     // En tests se permite "!" para acceder a datos de tablas conocidos.

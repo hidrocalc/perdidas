@@ -10,6 +10,7 @@
   --exito: #1d6b35;
   --borde: #8a94a3;
   --foco: #c2410c;
+  --error: #b3261e;
   color-scheme: light dark;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
@@ -26,6 +27,7 @@
     --exito: #7ddc97;
     --borde: #6b7482;
     --foco: #fb923c;
+    --error: #ffb4ab;
   }
 }
 
@@ -56,4 +58,35 @@ button {
 button.secundario {
   background: transparent;
   color: var(--primario);
+}
+
+input[type="text"],
+select {
+  font: inherit;
+  font-size: 1rem; /* 16 px: evita el zoom automático de iOS al enfocar */
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+  width: 100%;
+}
+
+/* Visible solo para lectores de pantalla. */
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ícono delante de los mensajes de error (el texto del error es el que lee el lector de pantalla). */
+.icono-error {
+  margin-right: 0.35em;
 }
