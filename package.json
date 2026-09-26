@@ -11,7 +11,7 @@
     "lint": "eslint --max-warnings 0 packages app",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "build": "pnpm --filter @dw/app build",
+    "build": "pnpm --filter @dw/app build && pnpm --filter @dw/app presupuesto",
     "dev": "pnpm --filter @dw/app dev",
     "check": "pnpm typecheck && pnpm lint && pnpm coverage && pnpm build"
   },

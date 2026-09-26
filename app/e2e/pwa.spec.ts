@@ -58,3 +58,29 @@ test("sin problemas de accesibilidad (axe, WCAG 2.1 AA)", async ({ page }) => {
     .analyze();
   expect(resultado.violations).toEqual([]);
 });
+
+test("manifiesto instalable (criterios de Chrome, en lugar de la categoría PWA de Lighthouse)", async ({ page, request }) => {
+  await page.goto("./");
+  const href = await page.locator('link[rel="manifest"]').getAttribute("href");
+  expect(href).not.toBeNull();
+  const respuesta = await request.get(new URL(href ?? "", page.url()).toString());
+  expect(respuesta.ok()).toBe(true);
+
+  const m = (await respuesta.json()) as {
+    name: string; short_name: string; start_url: string; scope: string; display: string; lang: string;
+    icons: { src: string; sizes: string; purpose?: string }[];
+  };
+  expect(m.name).toBe("Pérdidas de carga en tuberías");
+  expect(m.short_name.length).toBeLessThanOrEqual(12);
+  expect(m.start_url).toBe("/perdidas/");
+  expect(m.scope).toBe("/perdidas/");
+  expect(m.display).toBe("standalone");
+  expect(m.lang).toBe("es");
+  expect(m.icons.map((i) => i.sizes)).toEqual(expect.arrayContaining(["192x192", "512x512"]));
+  expect(m.icons.some((i) => i.purpose === "maskable")).toBe(true);
+
+  // Cada ícono declarado existe.
+  for (const icono of m.icons) {
+    expect((await request.get(new URL(icono.src, page.url()).toString())).ok()).toBe(true);
+  }
+});

@@ -77,8 +77,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Chromium de Playwright
         run: pnpm --filter @dw/app exec playwright install --with-deps chromium
-      - name: Capturas claro/oscuro a 360 y 1920 px (crea las de Linux que falten)
-        run: pnpm --filter @dw/app e2e:visual --update-snapshots=missing
+      # Pasada 1: solo escribe las capturas de Linux que falten (nunca pisa las existentes).
+      # Playwright marca como falla la captura que escribe por primera vez: por eso "|| true".
+      - name: Crear las capturas de Linux que falten
+        run: pnpm --filter @dw/app e2e:visual --update-snapshots=missing || true
       - name: Guardar en main las capturas nuevas
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -91,6 +93,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Capturas de referencia de Linux para la regresión visual (D-20)"
           git push
+      # Pasada 2: comparación estricta contra las capturas guardadas.
+      - name: Comparar capturas claro/oscuro a 360 y 1920 px
+        run: pnpm --filter @dw/app e2e:visual
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -98,4 +103,27 @@ jobs:
           path: |
             app/playwright-report-visual
             app/test-results
+          retention-days: 14
+
+  lighthouse:
+    name: Lighthouse (accesibilidad y buenas prácticas ≥ 95)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - name: Lighthouse CI (informes locales, no se suben a ningún servidor)
+        working-directory: app
+        run: pnpm dlx @lhci/cli@0.15.1 autorun
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse
+          path: app/lighthouse
           retention-days: 14

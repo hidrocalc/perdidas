@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-21 | 2026-09-26 | Peso y Lighthouse en la CI; la categoría PWA ya no existe | Vigente |
 | D-20 | 2026-09-26 | Regresión visual con capturas por sistema operativo | Vigente |
 | D-19 | 2026-09-26 | Tres secciones con #hash; el formulario conserva los datos | Vigente |
 | D-18 | 2026-09-25 | Tabla de iteraciones desplazable y enfocable | Vigente |
@@ -28,6 +29,30 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-21 · Peso y Lighthouse en la CI; la categoría PWA ya no existe
+
+**Peso.** `app/scripts/presupuesto.mjs` comprime con gzip cada archivo del build y suma. Corre dentro de `pnpm build` (y por lo tanto de `pnpm check` y de la CI): si el total pasa de 500 KB, falla y lista los archivos de mayor a menor. Se cuenta **todo** el build, no solo el HTML, JS y CSS, porque el service worker lo descarga completo en la primera visita. Al 26/09/2026: 50 KB (10 % del presupuesto).
+
+**Lighthouse.** Job "Lighthouse" en la CI con `@lhci/cli` 0.15.1 (usa Lighthouse 12), sobre la calculadora y las tablas:
+
+| Categoría | Umbral | Si no llega |
+| --- | --- | --- |
+| Accesibilidad | ≥ 95 | La CI falla |
+| Buenas prácticas | ≥ 95 | La CI falla |
+| Rendimiento | ≥ 90 | Solo avisa (en los runners compartidos de GitHub varía de una corrida a otra) |
+
+Los informes quedan como artefacto del job; no se suben a ningún servidor externo (privacidad).
+
+**La categoría "PWA" del gate de la etapa 4 ya no existe:** Lighthouse la eliminó en la versión 12. Se reemplaza por pruebas que verifican lo mismo, en los 3 motores:
+
+| Lo que medía la categoría PWA | Cómo se verifica ahora |
+| --- | --- |
+| Manifiesto instalable (nombre, íconos 192 y 512, maskable, `start_url`, `display`) | e2e "manifiesto instalable" |
+| Service worker que controla la página | e2e "el service worker precachea la app completa" |
+| Funciona sin conexión | e2e con el servidor apagado (D-08) |
+
+**Local.** En la máquina de desarrollo Lighthouse no logra abrir Chrome (`spawn UNKNOWN`, el mismo problema de Windows que D-07): se mide solo en la CI.
 
 ## D-20 · Regresión visual con capturas por sistema operativo
 
