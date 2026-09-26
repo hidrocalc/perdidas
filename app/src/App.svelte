@@ -2,6 +2,8 @@
   import { TABLAS } from "@dw/data";
   import AvisoPWA from "./componentes/AvisoPWA.svelte";
   import Formulario from "./componentes/Formulario.svelte";
+  import BarraTotal from "./componentes/BarraTotal.svelte";
+  import Resultados from "./componentes/Resultados.svelte";
   import ResumenErrores from "./componentes/ResumenErrores.svelte";
   import { evaluar, textosPorDefecto } from "./lib/entrada";
   import { formatearNumero } from "./lib/formato";
@@ -9,6 +11,7 @@
   let textos = $state(textosPorDefecto());
   // Se recalcula en cada cambio: el motor tarda menos de 1 ms.
   const evaluacion = $derived(evaluar(textos));
+  const calculoOk = $derived(evaluacion.errores.size === 0 && evaluacion.calculo?.ok === true ? evaluacion.calculo : null);
 </script>
 
 <header>
@@ -23,16 +26,23 @@
   </section>
 
   <section class="resultados" aria-labelledby="titulo-resultados">
-    <h2 id="titulo-resultados">Resultados</h2>
-    {#if evaluacion.errores.size > 0}
+    <h2 id="titulo-resultados" tabindex="-1">Resultados</h2>
+    {#if calculoOk !== null}
+      <Resultados
+        resultados={calculoOk.resultados}
+        intermedios={calculoOk.intermedios}
+        advertencias={calculoOk.advertencias}
+      />
+    {:else}
       <ResumenErrores errores={evaluacion.errores} />
-    {:else if evaluacion.calculo?.ok}
-      <p class="total">
-        Pérdida total (DW): <strong>{formatearNumero(evaluacion.calculo.resultados.h_total, 3)} m</strong>
-      </p>
     {/if}
   </section>
 </main>
+
+<BarraTotal
+  total={calculoOk === null ? null : `${formatearNumero(calculoOk.resultados.h_total, 3)} m`}
+  cantidadErrores={evaluacion.errores.size}
+/>
 
 <footer>
   <p>Tablas {TABLAS.version_tablas}</p>
@@ -76,14 +86,17 @@
     }
   }
 
-  .total {
-    font-size: 1.25rem;
-  }
-
   footer {
     color: var(--texto-suave);
     font-size: 0.875rem;
     padding-top: 2rem;
-    padding-bottom: 1rem;
+    /* Lugar para la barra fija con la pérdida total (pantallas angostas). */
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 1100px) {
+    footer {
+      padding-bottom: 1rem;
+    }
   }
 </style>

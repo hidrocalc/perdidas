@@ -6,6 +6,8 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-16 | 2026-09-25 | Barra fija con la pérdida total en pantallas angostas | Vigente |
+| D-15 | 2026-09-25 | Decimales del caudal equivalente | Vigente |
 | D-14 | 2026-09-25 | Regla `no-useless-default-assignment` apagada en `.svelte` | Vigente |
 | D-13 | 2026-09-25 | Campos numéricos con `type="text"` e `inputmode`, no `type="number"` | Vigente |
 | D-12 | 2026-09-25 | Cantidad de singularidad vacía = 0; se envían las 10 filas | Vigente |
@@ -22,6 +24,24 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-16 · Barra fija con la pérdida total en pantallas angostas
+
+**Contexto.** En el celular (y hasta 1100 px) los resultados quedan debajo de todo el formulario: al cambiar un dato no se ve el efecto sin hacer scroll.
+
+**Decisión.** Por debajo de 1100 px, una barra fija abajo muestra "Pérdida total: 3,657 m" (o "N datos para corregir") y un botón "Ver resultados" que lleva el foco al título de resultados. Desde 1100 px la barra se oculta y los resultados van en una columna fija al costado.
+
+**Accesibilidad.** `scroll-padding-bottom` evita que la barra tape un campo enfocado con el teclado; el pie de página deja lugar para la barra.
+
+## D-15 · Decimales del caudal equivalente
+
+**Contexto.** La especificación pide mostrar el caudal en m³/h, l/s, m³/s y l/h, pero no fija el formato.
+
+**Decisión.** m³/h y l/s con 3 decimales, m³/s con 6 y l/h con 1. Con los datos por defecto: 280,000 m³/h · 77,778 l/s · 0,077778 m³/s · 280 000,0 l/h.
+
+**Por qué.** Mantiene al menos 4 cifras significativas en los caudales de riego típicos (de décimas de l/s a cientos de m³/h). Es solo presentación y se puede ajustar sin tocar el motor.
+
+**Relacionado.** Entre un número y su unidad va un espacio no separable, también en "ALTA (> 2,5 m/s)", para que la unidad nunca quede sola en otra línea.
 
 ## D-14 · Regla `no-useless-default-assignment` apagada en `.svelte`
 

@@ -4,14 +4,14 @@ import { expect, test, type Page } from "@playwright/test";
 /** Espacio fino no separable: separador de miles de la app. */
 const FINO = " ";
 
-const total = (page: Page) => page.locator(".total");
+const total = (page: Page) => page.locator("#resultado-total .valor");
 
 test.beforeEach(async ({ page }) => {
   await page.goto("./");
 });
 
 test("los datos por defecto dan la pérdida total de la especificación (3,657 m)", async ({ page }) => {
-  await expect(total(page)).toHaveText("Pérdida total (DW): 3,657 m");
+  await expect(total(page)).toHaveText("3,657 m");
   await expect(page.locator("#Q-interpretado")).toHaveText(`Interpretado: 280${FINO}000 l/h`);
   await expect(page.getByText("DI de tabla: 169,4 mm")).toBeVisible();
 });
@@ -36,7 +36,7 @@ test("separador ambiguo: mensaje exacto en el campo y en el resumen, sin resulta
   await expect(campo).toBeFocused();
 
   await campo.fill("50");
-  await expect(total(page)).toHaveText("Pérdida total (DW): 3,657 m");
+  await expect(total(page)).toHaveText("3,657 m");
 });
 
 test("error de rango del motor, con el texto de la especificación", async ({ page }) => {
@@ -48,7 +48,7 @@ test("tabla Manual: pide el DI y calcula con él", async ({ page }) => {
   await page.getByLabel("Manual (DI a mano)").check();
   await expect(page.locator("#di_manual-error")).toHaveText("⚠Ingresá un valor para DI manual.");
   await page.getByLabel("DI manual").fill("169,4");
-  await expect(total(page)).toHaveText("Pérdida total (DW): 3,657 m");
+  await expect(total(page)).toHaveText("3,657 m");
 });
 
 test("tabla PE: solo ofrece DN y PN que existen", async ({ page }) => {

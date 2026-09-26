@@ -11,6 +11,9 @@
   --borde: #8a94a3;
   --foco: #c2410c;
   --error: #b3261e;
+  --aviso: #b26a00;
+  --aviso-fondo: #fff4e0;
+  --aviso-texto: #6b4000;
   color-scheme: light dark;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
@@ -28,10 +31,16 @@
     --borde: #6b7482;
     --foco: #fb923c;
     --error: #ffb4ab;
+    --aviso: #ffb74d;
+    --aviso-fondo: #2b2112;
+    --aviso-texto: #ffd18a;
   }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+
+/* Que un campo enfocado no quede tapado por la barra fija de abajo. */
+html { scroll-padding-bottom: 5rem; }
 
 body {
   margin: 0;
