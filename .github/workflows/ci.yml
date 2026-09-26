@@ -13,14 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12"  # la CI usa otra versión que el desarrollo a propósito: detecta dependencias de versión
       - run: pip install -r oracle/requirements.txt
       - name: Pruebas del oráculo
         run: python -m pytest oracle -q
       - name: Los vectores guardados coinciden con los que genera el oráculo
-        run: |
-          python oracle/generar_vectores.py
-          git diff --exit-code test_vectors/
+        run: python oracle/generar_vectores.py --verificar
 
   motor:
     name: Motor (TypeScript)

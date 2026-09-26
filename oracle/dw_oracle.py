@@ -231,8 +231,13 @@ def calcular(e: Entrada):
     hv = V ** 2 / (2 * g)
     hf = f * (e.L / D) * hv
     kdict = {s["singularidad"]: s["k"] for s in DATA["singularidades"]}
-    sumK = sum(n * kdict[nombre] for nombre, n in e.cantidades.items())
-    sumK += sum(s["cantidad"] * s["k"] for s in e.singularidades_extra)
+    # Suma explicita de izquierda a derecha (igual que el Excel y el motor TS).
+    # No usar sum(): desde Python 3.12 usa suma compensada y el ultimo decimal cambia segun la version.
+    sumK = 0.0
+    for nombre, n in e.cantidades.items():
+        sumK += n * kdict[nombre]
+    for s in e.singularidades_extra:
+        sumK += s["cantidad"] * s["k"]
     hloc = sumK * hv
     total = hf + hloc
     # Paso 10

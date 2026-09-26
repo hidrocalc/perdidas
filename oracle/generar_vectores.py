@@ -8,6 +8,7 @@ Semilla fija: la salida es reproducible byte a byte.
 import json
 import math
 import random
+import sys
 from dataclasses import asdict
 from pathlib import Path
 
@@ -158,6 +159,27 @@ for texto in ["0,02", "0.02", "5", " 5 ", "+5", "-5", "5.", ".5", ",5", "1e-3", 
               "Infinity", "inf", "--1", "1e", "e5", "1 000", "0", "0,0", "1e400"]:
     v, err = o.parse_numero(texto)
     parseo.append({"texto": texto, "valor": v, "error": err})
+
+if "--verificar" in sys.argv:
+    # Modo CI: no escribe nada; comprueba que los vectores guardados coinciden (con tolerancia)
+    # con los que genera el oraculo en esta maquina.
+    from comparar import diferencia
+    fallas = 0
+    for cat, lista in casos.items():
+        guardados = json.loads((OUT / f"calculo_{cat}.json").read_text(encoding="utf-8"))["casos"]
+        nuevos = json.loads(json.dumps(lista))
+        if len(guardados) != len(nuevos):
+            print(f"calculo_{cat}.json: {len(guardados)} casos guardados vs {len(nuevos)} generados"); fallas += 1
+            continue
+        for g, n in zip(guardados, nuevos):
+            d = diferencia(n, g)
+            if d:
+                print(g["id"], d); fallas += 1
+    guardado_parseo = json.loads((OUT / "parseo.json").read_text(encoding="utf-8"))["casos"]
+    if guardado_parseo != json.loads(json.dumps(parseo)):
+        print("parseo.json difiere"); fallas += 1
+    print("vectores OK" if fallas == 0 else f"{fallas} diferencias: regenerar con 'python oracle/generar_vectores.py'")
+    sys.exit(1 if fallas else 0)
 
 OUT.mkdir(exist_ok=True)
 meta = {"version_especificacion": "1.0", "version_tablas": o.DATA["version_tablas"],

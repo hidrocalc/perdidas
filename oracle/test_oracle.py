@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 
 import dw_oracle as o
+from comparar import diferencia
 
 ROOT = Path(__file__).resolve().parent.parent
 rng = random.Random(7)
@@ -34,11 +35,16 @@ N = 300
 
 
 def test_vectores_se_reproducen():
-    """El oraculo actual reproduce exactamente los vectores guardados."""
+    """El oraculo reproduce los vectores guardados (tolerancia 1E-12, ver comparar.py).
+
+    No se exige igualdad bit a bit: versiones distintas de Python o de su biblioteca
+    matematica pueden diferir en el ultimo decimal (p. ej. log10 o pow).
+    """
     for f in glob.glob(str(ROOT / "test_vectors" / "calculo_*.json")):
         for caso in json.load(open(f, encoding="utf-8"))["casos"]:
-            nuevo = o.calcular(o.Entrada(**caso["entrada"]))
-            assert json.loads(json.dumps(nuevo)) == caso["esperado"], caso["id"]
+            nuevo = json.loads(json.dumps(o.calcular(o.Entrada(**caso["entrada"]))))
+            d = diferencia(nuevo, caso["esperado"])
+            assert d is None, f"{caso['id']}: {d}"
 
 
 def test_parseo_se_reproduce():
