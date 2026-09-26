@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-20 | 2026-09-26 | Regresión visual con capturas por sistema operativo | Vigente |
 | D-19 | 2026-09-26 | Tres secciones con #hash; el formulario conserva los datos | Vigente |
 | D-18 | 2026-09-25 | Tabla de iteraciones desplazable y enfocable | Vigente |
 | D-17 | 2026-09-25 | Paso a paso con 6 cifras significativas y notación E | Vigente |
@@ -27,6 +28,28 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-20 · Regresión visual con capturas por sistema operativo
+
+**Qué es.** Capturas de pantalla de referencia guardadas en el repo. En cada push se vuelven a sacar y se comparan: si algo del diseño cambió sin querer (un margen, un color, un texto), el test falla y muestra la diferencia.
+
+**Alcance.** 5 pantallas (calculadora, calculadora con errores, paso a paso abierto, tablas y Acerca de) × tema claro y oscuro × 360 y 1920 px = 20 capturas. Solo Chromium: las diferencias entre motores las cubren los e2e. Tolerancia: 1 % de píxeles distintos.
+
+**Problema.** Las fuentes se dibujan distinto en Windows y en Linux, así que una captura de Windows nunca coincide con una de Linux. En la máquina de desarrollo no hay Docker ni WSL para generar las de Linux.
+
+**Decisión.**
+
+| Pieza | Cómo |
+| --- | --- |
+| Nombres por sistema | `calcular-claro-360-win32.png` y `calcular-claro-360-linux.png` conviven en `app/e2e/visual/capturas/` |
+| Local | `pnpm --filter @dw/app e2e:visual` compara contra las `-win32` |
+| CI | El job "Regresión visual (Linux)" corre con `--update-snapshots=missing`: si falta una captura de Linux la crea y la commitea en `main` con el bot de GitHub; si existe, compara |
+| Aceptar un cambio de diseño hecho a propósito | Borrar las capturas afectadas (`-win32` y `-linux`), regenerar las de Windows en local y hacer push: la CI crea las de Linux |
+| Elementos variables | El pie (versión de la app) y las versiones de "Acerca de" se tapan; la barra fija se oculta (se dibujaría en el medio de una captura de página completa); sin service worker |
+
+**Consecuencia práctica.** Cuando la CI commitea capturas, `main` en GitHub queda un commit adelante: antes del próximo push hay que hacer `git pull --rebase`.
+
+**Hallazgo al armarlo.** Con un campo ilegible (p. ej. L = "1.000,5") el formulario no llama al motor, así que un error de rango en otro campo (T = 70) recién aparece cuando se corrige el primero. Es coherente con D-11 (no se calcula con datos a medio leer) y queda documentado acá.
 
 ## D-19 · Tres secciones con #hash; el formulario conserva los datos
 

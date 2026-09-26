@@ -6,3 +6,4 @@ coverage/
 app/dist/
 app/test-results/
 app/playwright-report/
+app/playwright-report-visual/

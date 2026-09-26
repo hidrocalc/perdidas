@@ -33,7 +33,7 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 | 1. Oráculo y vectores | Hecha: 340 casos de cálculo y 34 de parseo; oráculo = Excel en 309 casos, error máximo 1,2E-13 |
 | 2. Motor `@dw/core` | Hecha: 100 % de líneas, 99 % de ramas, 25/25 mutantes detectados. Revisión 1.1 (D-09): 343 vectores |
 | 3. Datos y unidades | Casi resuelta dentro del motor (tablas exportadas del Excel, 7 unidades de caudal) |
-| **4. Interfaz PWA** | **En curso**: Svelte 5 (D-01). Hechos los pasos 1–7 (andamiaje, shell PWA + Playwright, formato y mensajes, formulario, resultados y advertencias, paso a paso, tablas de consulta y Acerca de). Sigue el paso 8: regresión visual |
+| **4. Interfaz PWA** | **En curso**: Svelte 5 (D-01). Hechos los pasos 1–7 (andamiaje, shell PWA + Playwright, formato y mensajes, formulario, resultados y advertencias, paso a paso, tablas de consulta y Acerca de). Paso 8 (regresión visual, D-20) hecho. Sigue el paso 9: control de peso y Lighthouse en la CI |
 | 5. Pruebas en dispositivos y piloto | Pendiente: piloto con alumnos del curso de la docente |
 | 6. Publicación | Pendiente: GitHub Pages + QR en el EVA |
 
@@ -72,6 +72,7 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 pnpm install
 pnpm check                                    # typecheck (tsc + svelte-check) + lint + tests con cobertura + build
 pnpm --filter @dw/app e2e                     # Playwright (en Windows omite Firefox, ver D-07)
+pnpm --filter @dw/app e2e:visual              # regresión visual (capturas -win32 en local, -linux en la CI)
 pnpm dev                                      # interfaz en modo desarrollo
 python -m pytest oracle -q
 python oracle/generar_vectores.py --verificar # lo mismo que corre la CI
@@ -87,6 +88,7 @@ La CI (`.github/workflows/ci.yml`) corre en cada push: oráculo en Python 3.12, 
 - Las restas de valores casi iguales (`delta`, `dif_hw_dw`, `dif_sj`) se comparan con error absoluto.
 - Solo exportar `tablas.json` si cambió el Excel; un diff sin cambios en el Excel se descarta (D-10).
 - No usar `context.setOffline` para probar el modo offline: el WebKit de Playwright falla. Apagar el servidor (D-08).
+- La CI puede commitear capturas de Linux en `main` (D-20): hacer `git pull --rebase` antes de cada push.
 - `gh` no está instalado: la CI se consulta con la API pública (`api.github.com/repos/hidrocalc/perdidas/actions/runs`).
 
 ## Etapa 4: qué construir

@@ -60,3 +60,42 @@ jobs:
           name: playwright-report
           path: app/playwright-report
           retention-days: 14
+
+  visual:
+    name: Regresión visual (Linux)
+    runs-on: ubuntu-latest
+    # Puede commitear en main las capturas de referencia de Linux que falten (D-20).
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Chromium de Playwright
+        run: pnpm --filter @dw/app exec playwright install --with-deps chromium
+      - name: Capturas claro/oscuro a 360 y 1920 px (crea las de Linux que falten)
+        run: pnpm --filter @dw/app e2e:visual --update-snapshots=missing
+      - name: Guardar en main las capturas nuevas
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git add app/e2e/visual/capturas
+          if git diff --cached --quiet; then
+            echo "No hay capturas nuevas."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Capturas de referencia de Linux para la regresión visual (D-20)"
+          git push
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: regresion-visual
+          path: |
+            app/playwright-report-visual
+            app/test-results
+          retention-days: 14

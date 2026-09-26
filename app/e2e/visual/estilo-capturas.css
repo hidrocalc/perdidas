@@ -1,0 +1,5 @@
+/* Solo para las capturas: los elementos fijos se dibujan en la posición de la ventana y
+   aparecerían en el medio de una captura de página completa. La barra tiene sus propios e2e. */
+.barra {
+  visibility: hidden !important;
+}

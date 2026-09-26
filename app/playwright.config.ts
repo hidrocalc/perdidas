@@ -23,6 +23,8 @@ const enCI = process.env["CI"] !== undefined;
 
 export default defineConfig({
   testDir: "e2e",
+  // La regresión visual corre aparte: playwright.visual.config.ts (D-20).
+  testIgnore: "visual/**",
   fullyParallel: true,
   forbidOnly: enCI,
   retries: enCI ? 1 : 0,
