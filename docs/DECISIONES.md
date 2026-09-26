@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-22 | 2026-09-26 | Publicación en GitHub Pages en un workflow aparte | Vigente |
 | D-21 | 2026-09-26 | Peso y Lighthouse en la CI; la categoría PWA ya no existe | Vigente |
 | D-20 | 2026-09-26 | Regresión visual con capturas por sistema operativo | Vigente |
 | D-19 | 2026-09-26 | Tres secciones con #hash; el formulario conserva los datos | Vigente |
@@ -29,6 +30,23 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-22 · Publicación en GitHub Pages en un workflow aparte
+
+**Decisión.** `.github/workflows/pages.yml` publica `app/dist` en https://hidrocalc.github.io/perdidas/ cuando la CI de `main` termina en verde, con el mismo commit que pasó la CI. También se puede lanzar a mano (botón "Run workflow" en la pestaña Actions).
+
+| Detalle | Motivo |
+| --- | --- |
+| Workflow separado, disparado por `workflow_run` | Solo se publica lo que pasó todas las pruebas. Si la publicación falla (p. ej. Pages sin activar), la CI sigue en verde y el problema queda aislado |
+| `concurrency` sin cancelar | Dos pushes seguidos no dejan una publicación a medias |
+| `#hash` para las secciones (D-19) | Pages no necesita reglas de redirección: no hay rutas que den 404 |
+| El commit del bot con capturas (D-20) no dispara la CI | Las capturas no cambian el build: no hace falta republicar |
+
+**Paso manual, una sola vez:** en GitHub, *Settings → Pages → Build and deployment → Source: GitHub Actions*. El token de la CI no tiene permiso para activarlo.
+
+**Estado de la app publicada.** Es el prototipo de la etapa 4, todavía sin la aprobación de las 2 docentes: sirve como URL de staging para esa revisión y para el piloto. La difusión (QR en el EVA) es de la etapa 6.
+
+**Runner fijo para la regresión visual.** El 19/10/2026 `ubuntu-latest` pasa a Ubuntu 26, que dibuja las fuentes distinto: todas las capturas de Linux fallarían. El job visual queda fijo en `ubuntu-24.04`; al cambiarlo hay que regenerar las capturas `-linux` (D-20).
 
 ## D-21 · Peso y Lighthouse en la CI; la categoría PWA ya no existe
 

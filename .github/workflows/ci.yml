@@ -63,7 +63,8 @@ jobs:
 
   visual:
     name: Regresión visual (Linux)
-    runs-on: ubuntu-latest
+    # Versión fija: otra versión de Ubuntu dibuja las fuentes distinto y rompería todas las capturas (D-22).
+    runs-on: ubuntu-24.04
     # Puede commitear en main las capturas de referencia de Linux que falten (D-20).
     permissions:
       contents: write
