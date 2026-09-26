@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-19 | 2026-09-26 | Tres secciones con #hash; el formulario conserva los datos | Vigente |
 | D-18 | 2026-09-25 | Tabla de iteraciones desplazable y enfocable | Vigente |
 | D-17 | 2026-09-25 | Paso a paso con 6 cifras significativas y notación E | Vigente |
 | D-16 | 2026-09-25 | Barra fija con la pérdida total en pantallas angostas | Vigente |
@@ -26,6 +27,20 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-19 · Tres secciones con #hash; el formulario conserva los datos
+
+**Decisión.** La app tiene tres secciones: Calcular (`#calcular`, la de inicio), Tablas (`#tablas`) y Acerca de (`#acerca`). Un menú arriba (`<nav>` con `aria-current="page"`) las cambia. Cualquier otro `#hash` muestra la calculadora.
+
+| Detalle | Motivo |
+| --- | --- |
+| `#hash` y no rutas (`/tablas`) | GitHub Pages sirve archivos estáticos: una ruta real daría 404 al recargar. El `#hash` funciona siempre, también sin conexión |
+| El estado del formulario vive en `App.svelte` | Ir a consultar una tabla y volver no borra lo cargado |
+| Al cambiar de sección, el foco va al título (`h2`) | El lector de pantalla anuncia la sección nueva; con teclado se sigue desde ahí |
+| Tablas generadas desde `@dw/data` | Son exactamente las que usa el cálculo; ningún valor copiado a mano. Un test compara cada celda de diámetros con `diTablaMm()` |
+| Viscosidad en 10⁻⁶ m²/s | Como en la especificación; multiplicar por 10⁶ es solo cambio de escala para mostrar |
+
+La región desplazable de D-18 pasó a un componente único (`Desplazable.svelte`) que usan todas las tablas: la excepción al aviso de Svelte queda en un solo lugar.
 
 ## D-18 · Tabla de iteraciones desplazable y enfocable
 
