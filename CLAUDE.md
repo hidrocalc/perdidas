@@ -33,7 +33,7 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 | 1. Oráculo y vectores | Hecha: 340 casos de cálculo y 34 de parseo; oráculo = Excel en 309 casos, error máximo 1,2E-13 |
 | 2. Motor `@dw/core` | Hecha: 100 % de líneas, 99 % de ramas, 25/25 mutantes detectados. Revisión 1.1 (D-09): 343 vectores |
 | 3. Datos y unidades | Casi resuelta dentro del motor (tablas exportadas del Excel, 7 unidades de caudal) |
-| **4. Interfaz PWA** | **En curso**: Svelte 5 (D-01). Hechos los pasos 1–7 (andamiaje, shell PWA + Playwright, formato y mensajes, formulario, resultados y advertencias, paso a paso, tablas de consulta y Acerca de). Pasos 8 (regresión visual, D-20), 9 (peso y Lighthouse, D-21) y 10 (workflow de Pages, D-22) hechos; falta activar Pages en Settings. Sigue el paso 11: revisión de 2 docentes |
+| **4. Interfaz PWA** | **En curso**: Svelte 5 (D-01). Hechos los pasos 1–7 (andamiaje, shell PWA + Playwright, formato y mensajes, formulario, resultados y advertencias, paso a paso, tablas de consulta y Acerca de). Pasos 8 (regresión visual, D-20), 9 (peso y Lighthouse, D-21) y 10 (workflow de Pages, D-22) hechos; falta activar Pages en Settings. Sigue el paso 11: revisión de 2 docentes con [`docs/REVISION_DOCENTES.md`](docs/REVISION_DOCENTES.md) |
 | 5. Pruebas en dispositivos y piloto | Pendiente: piloto con alumnos del curso de la docente |
 | 6. Publicación | Pendiente: GitHub Pages + QR en el EVA |
 
