@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-23 | 2026-09-27 | Cierre de las etapas 3 y 4 | Vigente |
 | D-22 | 2026-09-26 | Publicación en GitHub Pages en un workflow aparte | Vigente |
 | D-21 | 2026-09-26 | Peso y Lighthouse en la CI; la categoría PWA ya no existe | Vigente |
 | D-20 | 2026-09-26 | Regresión visual con capturas por sistema operativo | Vigente |
@@ -30,6 +31,27 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-23 · Cierre de las etapas 3 y 4
+
+**Etapa 4 (interfaz, PWA y offline): cerrada el 27/09/2026.**
+
+| Criterio del gate | Evidencia |
+| --- | --- |
+| Playwright en verde en Chromium, Firefox y WebKit | 150 e2e × 3 anchos (360, 768, 1920 px) en cada push; Firefox se prueba en la CI (D-07) |
+| Lighthouse accesibilidad ≥ 95 | Job "Lighthouse" en verde (accesibilidad y buenas prácticas ≥ 95; rendimiento ≥ 90) |
+| Categoría PWA de Lighthouse | Ya no existe; reemplazada por e2e de instalación, precache y offline (D-21) |
+| Funciona en modo avión | e2e con el servidor apagado (D-08) y prueba de las docentes con la guía |
+| Aprobado por 2 docentes | Aprobación recibida el 27/09/2026, con la guía `docs/REVISION_DOCENTES.md` |
+
+**Etapa 3 (datos y unidades): cerrada el 27/09/2026.** Se resolvió dentro del motor durante la etapa 2:
+
+| Criterio del gate | Evidencia |
+| --- | --- |
+| Tablas = Excel | `tablas.json` exportado del Excel por `oracle/export_tables.py`; oráculo = Excel en 309 casos (error ≤ 1,2E-13) |
+| Conversiones de ida y vuelta sin pérdida | Factores exactos como numerador/denominador; propiedad con fast-check: el resultado no depende de la unidad de caudal |
+
+**Queda abierto (no bloquea el cierre):** los 5 a 10 ejercicios resueltos del curso para los "casos de libro" de la especificación. Se agregan como pruebas apenas lleguen.
 
 ## D-22 · Publicación en GitHub Pages en un workflow aparte
 

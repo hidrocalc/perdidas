@@ -1,6 +1,6 @@
 # Plan de desarrollo — App Darcy-Weisbach
 
-Copia en el repo del plan (original en claude.ai). Estado al 2026-09-25.
+Copia en el repo del plan (original en claude.ai). Estado al 2026-09-27.
 
 ## Resumen
 
@@ -28,7 +28,7 @@ Fuera de alcance en la v1: varios tramos en serie, dimensionamiento automático,
 
 ## Stack
 
-TypeScript estricto · Vite + vite-plugin-pwa (Workbox) · interfaz en **Svelte o Preact (pendiente de decidir al inicio de la etapa 4)** · Vitest + fast-check + Playwright (Chromium, Firefox, WebKit) · GitHub Pages · oráculo de referencia en Python.
+TypeScript estricto · Vite + vite-plugin-pwa (Workbox) · interfaz en **Svelte 5** (decidido al inicio de la etapa 4, D-01) · Vitest + fast-check + Playwright (Chromium, Firefox, WebKit) · GitHub Pages · oráculo de referencia en Python.
 
 ## Etapas
 
@@ -37,9 +37,9 @@ TypeScript estricto · Vite + vite-plugin-pwa (Workbox) · interfaz en **Svelte 
 | 0. Especificación | Validada por la docente (8 decisiones) | ✅ Cerrada |
 | 1. Oráculo y vectores | Oráculo = Excel en el 100 % de los casos (≤ 1E-9) | ✅ 309 casos, 0 diferencias |
 | 2. Motor `@dw/core` | Vectores 100 % OK, cobertura ≥ 95 %, tsc strict y ESLint sin avisos | ✅ 400 pruebas, CI en verde |
-| 3. Datos y unidades | Tablas = Excel; conversiones de ida y vuelta sin pérdida | 🟡 Casi resuelta dentro del motor |
-| 4. Interfaz, PWA y offline | Playwright en verde en 3 motores; Lighthouse PWA y accesibilidad ≥ 95; funciona en modo avión; aprobado por 2 docentes | ⏭️ Siguiente |
-| 5. Dispositivos y piloto | 0 errores críticos o mayores; resultados del piloto = Excel; SUS ≥ 70. Piloto con alumnos del curso de la docente | Pendiente |
+| 3. Datos y unidades | Tablas = Excel; conversiones de ida y vuelta sin pérdida | ✅ Cerrada (27/09/2026, resuelta dentro del motor, D-23) |
+| 4. Interfaz, PWA y offline | Playwright en verde en 3 motores; Lighthouse accesibilidad ≥ 95 (la categoría PWA ya no existe, D-21); funciona en modo avión; aprobado por 2 docentes | ✅ Cerrada (27/09/2026, aprobada por las 2 docentes, D-23) |
+| 5. Dispositivos y piloto | 0 errores críticos o mayores; resultados del piloto = Excel; SUS ≥ 70. Piloto con alumnos del curso de la docente | ⏭️ Siguiente |
 | 6. Publicación | Instalación y offline probados desde cero en las 5 plataformas; publicación y reversión documentadas | Pendiente |
 
 ## Estrategia de pruebas

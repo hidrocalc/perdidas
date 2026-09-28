@@ -2,7 +2,7 @@
 
 App para calcular pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-White, Hazen-Williams y pérdidas localizadas), destinada a docentes y estudiantes de la Facultad de Agronomía. Todo el cálculo se deriva de la *Especificación técnica v1* y se verifica contra el Excel corregido.
 
-Estado: etapas 0 (especificación), 1 (oráculo y vectores) y 2 (motor TypeScript) completas. Etapa 4 (interfaz PWA en Svelte 5) en curso. Las decisiones técnicas se registran en [docs/DECISIONES.md](docs/DECISIONES.md).
+Estado: etapas 0 a 4 cerradas (especificación, oráculo y vectores, motor, datos y unidades, interfaz PWA). La app está publicada en https://hidrocalc.github.io/perdidas/ y fue aprobada por 2 docentes. Sigue la etapa 5: pruebas en dispositivos y piloto con alumnos. Las decisiones técnicas se registran en [docs/DECISIONES.md](docs/DECISIONES.md).
 
 ## Decisiones de validación aplicadas
 
