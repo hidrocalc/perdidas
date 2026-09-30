@@ -1,4 +1,4 @@
-import { defineConfig, type Project } from "@playwright/test";
+import { defineConfig, devices, type Project } from "@playwright/test";
 
 const PUERTO = 4173;
 // En algunos Windows el Firefox de Playwright no arranca ("no se encontró el ensamblado
@@ -12,12 +12,18 @@ const VIEWPORTS = [
   { ancho: 1920, alto: 1080 },
 ] as const;
 
-const projects: Project[] = MOTORES.flatMap((browserName) =>
-  VIEWPORTS.map(({ ancho, alto }) => ({
-    name: `${browserName}-${ancho}`,
-    use: { browserName, viewport: { width: ancho, height: alto } },
-  })),
-);
+const projects: Project[] = [
+  ...MOTORES.flatMap((browserName) =>
+    VIEWPORTS.map(({ ancho, alto }) => ({
+      name: `${browserName}-${ancho}`,
+      use: { browserName, viewport: { width: ancho, height: alto } },
+    })),
+  ),
+  // Celulares emulados (pantalla táctil, navegador y densidad de cada equipo): reemplazan las
+  // pruebas en equipos físicos, que no se hacen (D-26).
+  { name: "iphone", use: { ...devices["iPhone 13"] } },
+  { name: "android", use: { ...devices["Pixel 7"] } },
+];
 
 const enCI = process.env["CI"] !== undefined;
 

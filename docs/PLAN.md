@@ -39,7 +39,7 @@ TypeScript estricto · Vite + vite-plugin-pwa (Workbox) · interfaz en **Svelte 
 | 2. Motor `@dw/core` | Vectores 100 % OK, cobertura ≥ 95 %, tsc strict y ESLint sin avisos | ✅ 400 pruebas, CI en verde |
 | 3. Datos y unidades | Tablas = Excel; conversiones de ida y vuelta sin pérdida | ✅ Cerrada (27/09/2026, resuelta dentro del motor, D-23) |
 | 4. Interfaz, PWA y offline | Playwright en verde en 3 motores; Lighthouse accesibilidad ≥ 95 (la categoría PWA ya no existe, D-21); funciona en modo avión; aprobado por 2 docentes | ✅ Cerrada (27/09/2026, aprobada por las 2 docentes, D-23) |
-| 5. Dispositivos y piloto | 0 errores críticos o mayores; resultados del piloto = Excel; SUS ≥ 70. Piloto con alumnos del curso de la docente | ⏭️ Siguiente |
+| 5. Dispositivos y piloto | Resultados del piloto = Excel; SUS ≥ 70; 0 errores críticos o mayores reportados en el piloto. Piloto con alumnos del curso de la docente. Sin pruebas en equipos físicos: celulares emulados en la CI (D-26) | 🟡 En curso |
 | 6. Publicación | Instalación y offline probados desde cero en las 5 plataformas; publicación y reversión documentadas | Pendiente |
 
 ## Estrategia de pruebas
@@ -54,7 +54,7 @@ TypeScript estricto · Vite + vite-plugin-pwa (Workbox) · interfaz en **Svelte 
 | Offline | Carga, calcula y consulta tablas sin red; una actualización no rompe la sesión abierta | Cada commit |
 | Accesibilidad y peso | axe-core; presupuesto de Lighthouse en la CI | Cada commit |
 | Regresión visual | Capturas en tema claro y oscuro | Cada release |
-| Dispositivos reales | Android de gama baja, Android medio, iPhone/Safari, Windows 10/11, macOS, Ubuntu | Cada release |
+| Celulares emulados | iPhone 13 y Pixel 7 en Playwright, toda la suite (reemplaza las pruebas en equipos físicos, D-26) | Cada commit |
 | Piloto | Práctico guiado: app vs Excel, encuesta SUS | Etapa 5 |
 
 Regla de regresión: cada error encontrado se convierte primero en un test que falla y después se corrige. Nada se publica con la CI en rojo.

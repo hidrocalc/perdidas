@@ -6,7 +6,8 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
-| D-25 | 2026-09-30 | Materiales de la etapa 5: planilla de registro, guía del piloto y ejercicios propios | Vigente |
+| D-26 | 2026-09-30 | Sin pruebas en equipos físicos: se reemplazan por celulares emulados | Vigente |
+| D-25 | 2026-09-30 | Materiales de la etapa 5: planilla de registro, guía del piloto y ejercicios propios | Vigente (la hoja Dispositivos se quitó por D-26) |
 | D-24 | 2026-09-30 | Diagnóstico en la app y prueba de rendimiento con CPU lenta | Vigente |
 | D-23 | 2026-09-27 | Cierre de las etapas 3 y 4 | Vigente |
 | D-22 | 2026-09-26 | Publicación en GitHub Pages en un workflow aparte | Vigente |
@@ -34,13 +35,30 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 ---
 
+## D-26 · Sin pruebas en equipos físicos: se reemplazan por celulares emulados
+
+**Contexto.** Takeshi decidió no hacer la prueba planificada en 6 equipos físicos (Android de gama baja y media, iPhone, Windows, macOS y Linux).
+
+**Decisión.** Se quita ese criterio del gate de la etapa 5 y se compensa con lo que se puede automatizar sin costo:
+
+| Lo que cubría la prueba en equipos | Cómo queda cubierto |
+| --- | --- |
+| Navegadores de celular (Safari de iPhone, Chrome de Android) | Toda la suite e2e corre además en **iPhone 13** y **Pixel 7** emulados por Playwright: pantalla, densidad, agente de usuario y pantalla táctil de cada equipo (53 tests cada uno) |
+| Motores de escritorio | Chromium, Firefox y WebKit a 360, 768 y 1920 px (sin cambios) |
+| Rendimiento en un Android de gama baja | e2e con la CPU 6 veces más lenta (D-24) |
+| Instalación y modo sin conexión | e2e de manifiesto, precache y servidor apagado (D-08, D-21), más la instalación real en el celular de Takeshi (30/09/2026) y el uso de las 2 docentes |
+
+**Riesgo que queda.** La emulación usa el motor de cada navegador pero no el sistema operativo real. Lo que no puede detectar: detalles de instalación propios de iOS (Safari real) y equipos con muy poca memoria. Mitigación: en el piloto los alumnos usan sus propios celulares, y si algo falla, el diagnóstico de *Acerca de* (D-24) permite copiar el estado del equipo para reportarlo.
+
+**Cambios.** La hoja *Dispositivos* se quitó de la planilla de registro. Gate de la etapa 5 en `docs/PLAN.md`: resultados del piloto = Excel, SUS ≥ 70 y ningún error crítico o mayor reportado en el piloto.
+
 ## D-25 · Materiales de la etapa 5: planilla de registro, guía del piloto y ejercicios propios
 
 **Decisión.** Tres materiales, en la carpeta del proyecto en OneDrive (junto al Excel) y con su fuente en el repo cuando es texto:
 
 | Material | Para qué | Dónde |
 | --- | --- | --- |
-| *Etapa 5 - Registro de pruebas.xlsx* | Hojas Dispositivos (7 pasos por equipo y veredicto automático), Ejercicios (valores esperados), Piloto (app contra Excel por alumno) y Encuesta SUS (puntaje automático). Resumen con el cumplimiento de cada meta del gate | OneDrive (es de trabajo, se llena a mano) |
+| *Etapa 5 - Registro de pruebas.xlsx* | Hojas Ejercicios (valores esperados), Piloto (app contra Excel por alumno) y Encuesta SUS (puntaje automático), con el cumplimiento de cada meta del gate. (La hoja Dispositivos se quitó: D-26) | OneDrive (es de trabajo, se llena a mano) |
 | *Guía del piloto con alumnos.docx* | 2 páginas para la docente y una hoja para el alumno imprimible en doble faz (ejercicios y respuestas de un lado, encuesta del otro) | OneDrive; fuente en `docs/PILOTO.md` |
 | Diagnóstico en la app | Medir tiempos y estado en cada equipo real (D-24) | *Acerca de* |
 
