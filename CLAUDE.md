@@ -89,7 +89,7 @@ La CI (`.github/workflows/ci.yml`) corre en cada push: oráculo en Python 3.12, 
 - Solo exportar `tablas.json` si cambió el Excel; un diff sin cambios en el Excel se descarta (D-10).
 - No usar `context.setOffline` para probar el modo offline: el WebKit de Playwright falla. Apagar el servidor (D-08).
 - La CI puede commitear capturas de Linux en `main` (D-20): hacer `git pull --rebase` antes de cada push.
-- `gh` no está instalado: la CI se consulta con la API pública (`api.github.com/repos/hidrocalc/perdidas/actions/runs`).
+- `gh` no está instalado: la CI se consulta con la API pública (`api.github.com/repos/hidrocalc/perdidas/actions/runs`). Sin autenticación permite 60 consultas por hora: esperar la CI con pocas consultas espaciadas (no cada 10–20 s), o se agota el cupo.
 
 ## Etapa 4: qué construir
 
