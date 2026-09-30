@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-25 | 2026-09-30 | Materiales de la etapa 5: planilla de registro, guía del piloto y ejercicios propios | Vigente |
 | D-24 | 2026-09-30 | Diagnóstico en la app y prueba de rendimiento con CPU lenta | Vigente |
 | D-23 | 2026-09-27 | Cierre de las etapas 3 y 4 | Vigente |
 | D-22 | 2026-09-26 | Publicación en GitHub Pages en un workflow aparte | Vigente |
@@ -32,6 +33,22 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-25 · Materiales de la etapa 5: planilla de registro, guía del piloto y ejercicios propios
+
+**Decisión.** Tres materiales, en la carpeta del proyecto en OneDrive (junto al Excel) y con su fuente en el repo cuando es texto:
+
+| Material | Para qué | Dónde |
+| --- | --- | --- |
+| *Etapa 5 - Registro de pruebas.xlsx* | Hojas Dispositivos (7 pasos por equipo y veredicto automático), Ejercicios (valores esperados), Piloto (app contra Excel por alumno) y Encuesta SUS (puntaje automático). Resumen con el cumplimiento de cada meta del gate | OneDrive (es de trabajo, se llena a mano) |
+| *Guía del piloto con alumnos.docx* | 2 páginas para la docente y una hoja para el alumno imprimible en doble faz (ejercicios y respuestas de un lado, encuesta del otro) | OneDrive; fuente en `docs/PILOTO.md` |
+| Diagnóstico en la app | Medir tiempos y estado en cada equipo real (D-24) | *Acerca de* |
+
+**Ejercicios propios (provisorios).** Los ejercicios resueltos del curso todavía no llegaron. Para no frenar el piloto se armaron 3 casos típicos de riego (conducción de PVC, lateral de PE, impulsión de acero con DI manual), con los resultados esperados calculados por el oráculo. Cubren tablas PVC, PE y Manual, 3 unidades de caudal distintas, singularidades variadas y distintas advertencias. Cuando lleguen los del curso, la docente puede reemplazarlos o sumarlos.
+
+**Privacidad.** La planilla no lleva nombres: cada alumno o pareja es un número.
+
+**Encuesta.** SUS (*System Usability Scale*), la escala estándar de 10 preguntas que pide el plan. Puntaje = [Σ(impares − 1) + Σ(5 − pares)] × 2,5. La fórmula de la planilla se verificó en Excel contra casos calculados a mano (100, 87,5 y 50).
 
 ## D-24 · Diagnóstico en la app y prueba de rendimiento con CPU lenta
 

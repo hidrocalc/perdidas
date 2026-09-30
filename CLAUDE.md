@@ -34,7 +34,7 @@ Calculadora de pérdidas de carga en tuberías (Darcy-Weisbach con Colebrook-Whi
 | 2. Motor `@dw/core` | Hecha: 100 % de líneas, 99 % de ramas, 25/25 mutantes detectados. Revisión 1.1 (D-09): 343 vectores |
 | 3. Datos y unidades | Cerrada (27/09/2026, D-23): tablas exportadas del Excel y cruzadas en 309 casos; resultado invariante a la unidad de caudal (propiedad con fast-check) |
 | 4. Interfaz PWA | **Cerrada (27/09/2026, D-23)**: Svelte 5, 150 e2e en 3 motores, regresión visual, Lighthouse, aprobada por las 2 docentes. Publicada en https://hidrocalc.github.io/perdidas/ (se republica sola con cada CI en verde de `main`) |
-| **5. Pruebas en dispositivos y piloto** | **Siguiente**: equipos reales (Android gama baja, iPhone, Windows, macOS, Linux), piloto con alumnos del curso y encuesta SUS ≥ 70. Pendiente de la etapa 4: 5–10 ejercicios resueltos del curso para los casos de libro |
+| **5. Pruebas en dispositivos y piloto** | **En curso**: diagnóstico en la app (D-24); planilla de registro y guía del piloto listas (D-25, [`docs/PILOTO.md`](docs/PILOTO.md), Word y Excel en la carpeta del Excel). Falta: probar en los 6 equipos, hacer el piloto y cargar resultados. Pendiente de la etapa 4: 5–10 ejercicios resueltos del curso para los casos de libro |
 | 6. Publicación | Pendiente: GitHub Pages + QR en el EVA |
 
 ## Decisiones de validación (ya aplicadas en todo)
