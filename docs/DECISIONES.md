@@ -6,6 +6,7 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 
 | ID | Fecha | Decisión | Estado |
 | --- | --- | --- | --- |
+| D-24 | 2026-09-30 | Diagnóstico en la app y prueba de rendimiento con CPU lenta | Vigente |
 | D-23 | 2026-09-27 | Cierre de las etapas 3 y 4 | Vigente |
 | D-22 | 2026-09-26 | Publicación en GitHub Pages en un workflow aparte | Vigente |
 | D-21 | 2026-09-26 | Peso y Lighthouse en la CI; la categoría PWA ya no existe | Vigente |
@@ -31,6 +32,23 @@ Convención: la más reciente arriba. Si una decisión se revierte, no se borra:
 | D-01 | 2026-09-25 | Interfaz en Svelte 5 | Vigente |
 
 ---
+
+## D-24 · Diagnóstico en la app y prueba de rendimiento con CPU lenta
+
+**Contexto.** La etapa 5 pide "resultado en < 100 ms en un Android de gama baja" y probar la app en equipos reales. Quien prueba no tiene herramientas de desarrollo en el celular.
+
+**Decisión.** Sección "Diagnóstico de este equipo" en *Acerca de*:
+
+| Muestra | Cómo lo sabe |
+| --- | --- |
+| Instalada como app | `display-mode: standalone` (o `navigator.standalone` en iPhone) |
+| Lista para usar sin conexión | Hay un service worker controlando la página |
+| Tiempo de cálculo | Botón "Medir": 200 corridas de lo que se ejecuta en cada tecla (leer el formulario + `calcular()`), promedio y máximo |
+| Resumen | Botón "Copiar resumen": versión, estado, tiempos y navegador, para pegar en un mensaje |
+
+Nada se envía: la app sigue sin analítica. La medición llama a `calcular()` con los datos por defecto; no hace cálculos propios.
+
+**Prueba automática.** Un e2e en Chromium limita la CPU a 1/6 (aproximación de un Android de gama baja frente a una compu) y exige que el cálculo más lento de la serie tarde menos de 100 ms. Es una aproximación: la medición definitiva es la del equipo real con el diagnóstico.
 
 ## D-23 · Cierre de las etapas 3 y 4
 

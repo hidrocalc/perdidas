@@ -2,6 +2,7 @@
   import { TABLAS } from "@dw/data";
   import { formatearInterpretado, formatearSignificativas } from "../lib/formato";
   import { REPOSITORIO, VERSION_APP, VERSION_ESPECIFICACION, VERSION_TABLAS } from "../lib/version";
+  import Diagnostico from "./Diagnostico.svelte";
 
   const ct = TABLAS.constantes;
   const n = formatearInterpretado;
@@ -53,6 +54,9 @@
   Sin cuentas, sin cookies y sin analítica. Los datos que cargás no salen de tu dispositivo. Después de la
   primera carga, la app funciona sin conexión.
 </p>
+
+<h3>Diagnóstico de este equipo</h3>
+<Diagnostico />
 
 <h3>Licencia y código</h3>
 <p>
